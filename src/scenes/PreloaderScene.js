@@ -11,13 +11,13 @@ export default class PreloaderScene extends Phaser.Scene {
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(240, 480, 320, 50);
+    progressBox.fillRect(240, 490, 320, 50);
 
     const { width } = this.cameras.main;
-    const height = this.cameras.main.width;
+    const { height } = this.cameras.main;
     const loadingText = this.make.text({
       x: width / 2,
-      y: height / 2 + 52,
+      y: height / 2 + 65,
       text: 'Loading...',
       style: {
         font: '20px monospace',
@@ -28,11 +28,11 @@ export default class PreloaderScene extends Phaser.Scene {
 
     const percentText = this.make.text({
       x: width / 2 - 15,
-      y: height / 2 + 106,
+      y: height / 2 + 115,
       text: '0%',
       style: {
         font: '18px monospace',
-        fill: '#ffffff',
+        fill: '#b3042c',
       },
     });
     percentText.setOrigin(0.5, 0.5);
@@ -55,14 +55,18 @@ export default class PreloaderScene extends Phaser.Scene {
       progressBar.fillRect(250, 250, 300 * value, 30);
     });
 
-    this.load.on('complete', () => {
+    this.load.on('fileprogress', (file) => {
+      assetText.setText(`Loading asset: ${file.key}`);
+    });
+
+    this.load.on('complete', function () {
       progressBar.destroy();
       progressBox.destroy();
       loadingText.destroy();
       percentText.destroy();
       assetText.destroy();
       this.ready();
-    });
+    }.bind(this));
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
   }
