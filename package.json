@@ -2,9 +2,11 @@
   "name": "Space-Shooter---Javascript-Capstone",
   "version": "1.0.0",
   "description": "For the final and Capstone Javascript project, we are tasked with creating a Phaser based game with Javascript",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack serve --mode development"
   },
   "repository": {
     "type": "git",
@@ -18,13 +20,23 @@
   },
   "homepage": "https://github.com/Rhelli/Space-Shooter---Javascript-Capstone#readme",
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^6.3.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-csstree-validator": "^1.9.0",
-    "stylelint-scss": "^3.17.2"
+    "stylelint-scss": "^3.17.2",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "phaser": "^3.24.1"
   }
 }
