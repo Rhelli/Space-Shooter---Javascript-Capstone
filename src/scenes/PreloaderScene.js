@@ -1,7 +1,7 @@
 import 'phaser';
 
 export default class PreloaderScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Preloader');
   }
 
@@ -12,4 +12,4 @@ export default class PreloaderScene extends Phaser.Scene {
   create() {
 
   }
-};
+}
