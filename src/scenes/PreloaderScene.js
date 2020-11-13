@@ -82,3 +82,5 @@ export default class PreloaderScene extends Phaser.Scene {
     }
   }
 }
+
+// title font size is 25. Make focus and non focus versions for hovering.

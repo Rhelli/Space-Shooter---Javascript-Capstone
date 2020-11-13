@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Rhelli/Space-Shooter---Javascript-Capstone#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.12.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^7.0.0",
@@ -32,6 +33,7 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "jest": "^26.6.3",
+    "jest-canvas-mock": "^2.3.0",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-csstree-validator": "^1.9.0",
@@ -42,5 +44,8 @@
   },
   "dependencies": {
     "phaser": "^3.24.1"
+  },
+  "jest": {
+    "setupFiles": ["jest-canvas-mock"]
   }
 }
