@@ -6,11 +6,10 @@ export default class TitleScene extends Phaser.Scene {
     super('Title');
   }
 
-  preload() {
-
-  }
-
   create() {
+    // Background
+    this.add.image('titleScreen', 400, 400);
+
     // Game Button
     this.gameButton = this.add.sprite(100, 200, 'playButton').setInteractive();
     this.centerButton(this.gameButton, 1);
@@ -65,7 +64,7 @@ export default class TitleScene extends Phaser.Scene {
   centerButton(gameObject, offset = 0) {
     Phaser.Display.Align.In.Center(
       gameObject,
-      this.add.zone(config.width / 2, config.height / 2 - offset * 100, config.width, config.height)
+      this.add.zone(config.width / 2, config.height / 1.5 - offset * 80, config.width, config.height)
     );
   }
 }
