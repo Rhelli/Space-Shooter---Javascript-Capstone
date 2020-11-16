@@ -32,14 +32,14 @@ export default class PreloaderScene extends Phaser.Scene {
       text: '0%',
       style: {
         font: '18px monospace',
-        fill: '#b3042c',
+        fill: '#ffffff',
       },
     });
     percentText.setOrigin(0.5, 0.5);
 
     const assetText = this.make.text({
       x: width / 2,
-      y: height / 2 + 50,
+      y: height / 2 + 165,
       text: '',
       style: {
         font: '18px monospace',
@@ -85,6 +85,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   ready() {
+    this.scene.start('Credits');
     this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title');
