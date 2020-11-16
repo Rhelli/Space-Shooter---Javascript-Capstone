@@ -7,7 +7,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
   preload() {
     this.add.image(400, 330, 'bootLogo');
-
+    this.add.image(400, 760, 'bootCopyright');
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
@@ -49,26 +49,35 @@ export default class PreloaderScene extends Phaser.Scene {
     assetText.setOrigin(0.5, 0.5);
 
     this.load.on('progress', (value) => {
-      percentText.setText(parseInt(value * 100) + '%');
+      percentText.setText(`${parseInt(value * 100)}%`);
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(250, 250, 300 * value, 30);
+      progressBar.fillRect(250, 500, 300 * value, 30);
     });
 
     this.load.on('fileprogress', (file) => {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
-    this.load.on('complete', function () {
+    this.load.on('complete', () => {
       progressBar.destroy();
       progressBox.destroy();
       loadingText.destroy();
       percentText.destroy();
       assetText.destroy();
       this.ready();
-    }.bind(this));
+    });
 
-    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
+    this.timedEvent = this.time.delayedCall(4000, this.ready, [], this);
+
+    this.load.image('titleScreen', 'titleScreen.png');
+    this.load.image('playButton', 'playButton.png');
+    this.load.image('playButtonFocus', 'playButtonFocus.png');
+    this.load.image('optionsButton', 'optionsButton.png');
+    this.load.image('optionsButtonFocus', 'optionsButtonFocus.png');
+    this.load.image('creditsButton', 'creditsButtonFocus.png');
+    this.load.image('creditsButtonFocus', 'creditsButtonFocus.png');
+    this.load.audio('titleMusic', ['titleMusic.ogg']);
   }
 
   init() {
@@ -83,4 +92,3 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 }
 
-// title font size is 25. Make focus and non focus versions for hovering.
