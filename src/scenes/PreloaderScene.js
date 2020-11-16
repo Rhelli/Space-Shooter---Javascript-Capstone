@@ -77,6 +77,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('optionsButtonFocus', 'optionsButtonFocus.png');
     this.load.image('creditsButton', 'creditsButton.png');
     this.load.image('creditsButtonFocus', 'creditsButtonFocus.png');
+    this.load.image('checkbox', 'checkbox.png');
+    this.load.image('checkboxChecked', 'checkboxChecked.png');
     this.load.audio('titleMusic', ['titleMusic.ogg']);
   }
 
@@ -85,7 +87,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   ready() {
-    this.scene.start('Credits');
+    this.scene.start('Options');
     this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title');
