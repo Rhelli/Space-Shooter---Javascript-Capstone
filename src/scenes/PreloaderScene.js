@@ -79,6 +79,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('creditsButtonFocus', 'creditsButtonFocus.png');
     this.load.image('checkbox', 'checkbox.png');
     this.load.image('checkboxChecked', 'checkboxChecked.png');
+    this.load.image('menuButton', 'menuButton.png');
+    this.load.image('menuButtonFocus', 'menuButtonFocus.png');
     this.load.audio('titleMusic', ['titleMusic.ogg']);
   }
 

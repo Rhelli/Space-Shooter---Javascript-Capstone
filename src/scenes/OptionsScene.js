@@ -5,10 +5,6 @@ export default class OptionsScene extends Phaser.Scene {
     super('Options');
   }
 
-  preload() {
-    this.load.image('staticBackground', 'corona_up.png');
-  }
-
   create() {
     this.add.image('staticBackground', 400, 400);
 
@@ -38,6 +34,20 @@ export default class OptionsScene extends Phaser.Scene {
     });
 
     this.updateAudio();
+
+    this.menuButton = this.add.sprite(400, 500, 'menuButton').setInteractive();
+
+    this.menuButton.on('pointerover', (pointer) => {
+      this.menuButton.setTexture('menuButtonFocus');
+    });
+
+    this.menuButton.on('pointerout', (pointer) => {
+      this.menuButton.setTexture('menuButton');
+    })
+
+    this.menuButton.on('pointerdown', (pointer) => {
+      this.scene.start('Title');
+    });
   }
 
   updateAudio() {
