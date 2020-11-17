@@ -7,7 +7,7 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('staticBackground', './Backgrounds/corona_up.png');
+    this.load.image('staticBackground', './backgrounds/corona_up.png');
   }
 
   create() {
