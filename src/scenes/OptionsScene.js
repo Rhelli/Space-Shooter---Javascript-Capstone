@@ -1,4 +1,5 @@
 import 'phaser';
+import Button from '../objects/button';
 
 export default class OptionsScene extends Phaser.Scene {
   constructor() {
@@ -32,19 +33,7 @@ export default class OptionsScene extends Phaser.Scene {
       this.updateAudio();
     });
 
-    this.menuButton = this.add.sprite(400, 500, 'menuButton').setInteractive();
-
-    this.menuButton.on('pointerover', (pointer) => {
-      this.menuButton.setTexture('menuButtonFocus');
-    });
-
-    this.menuButton.on('pointerout', (pointer) => {
-      this.menuButton.setTexture('menuButton');
-    })
-
-    this.menuButton.on('pointerdown', (pointer) => {
-      this.scene.start('Title');
-    });
+    this.menuButton = new Button(this, 400, 500, 'menuButton', 'menuButtonFocus', 'Title');
 
     this.updateAudio();
   }
