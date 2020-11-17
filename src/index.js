@@ -1,6 +1,6 @@
 import 'phaser';
 import Model from './model';
-import config from './config/config';
+import config from './config/Config';
 import GameScene from './scenes/GameScene';
 import BootScene from './scenes/BootScene';
 import PreloaderScene from './scenes/PreloaderScene';
