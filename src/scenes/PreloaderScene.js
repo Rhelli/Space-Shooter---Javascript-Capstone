@@ -81,6 +81,29 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('checkboxChecked', './buttons/checkboxChecked.png');
     this.load.image('menuButton', './buttons/menuButton.png');
     this.load.image('menuButtonFocus', './buttons/menuButtonFocus.png');
+
+    // Game Scene Assets
+    this.load.image('background0', './backgrounds/bkgd_0.png');
+    this.load.image('background1', './backgrounds/bkgd_1.png');
+    this.load.image('background2', './backgrounds/bkgd_2.png');
+    this.load.image('background3', './backgrounds/bkgd_3.png');
+    this.load.image('background4', './backgrounds/bkgd_4.png');
+    this.load.image('background6', './backgrounds/bkgd_6.png');
+    this.load.image('background7', './backgrounds/bkgd_7.png');
+
+    this.load.spritesheet('explosion1', './explosions/explosion1.png', {
+      frameWidth: 96,
+      frameHeight: 96
+    });
+    this.load.spritesheet('explosion2', './explosions/explosion2.png', {
+      frameWidth: 32,
+      frameHeight: 32
+    });
+    this.load.spritesheet('explosion3', './explosions/explosion3.png', {
+      frameWidth: 128,
+      frameHeight: 128
+    });
+
     this.load.audio('titleMusic', ['./music/titleMusic.ogg']);
   }
 
@@ -89,7 +112,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   ready() {
-    this.scene.start('Title');
+    this.scene.start('Game');
     this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title');
