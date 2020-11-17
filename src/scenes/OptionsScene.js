@@ -10,9 +10,6 @@ export default class OptionsScene extends Phaser.Scene {
 
     this.model = this.sys.game.globals.model;
 
-    this.musicOn = true;
-    this.soundOn = true;
-
     this.text = this.add.text(300, 100, 'Options', { fontSize: 48 });
     this.musicButton = this.add.image(200, 200, 'checkboxChecked');
     this.musicButton.setScale(0.6);
@@ -55,8 +52,14 @@ export default class OptionsScene extends Phaser.Scene {
   updateAudio() {
     if (this.model.musicOn === false) {
       this.musicButton.setTexture('checkbox');
+      this.sys.game.globals.titleMusic.stop();
+      this.model.titleMusicPlaying = false;
     } else {
       this.musicButton.setTexture('checkboxChecked');
+      if (this.model.titleMusicPlaying === false) {
+        this.sys.game.globals.titleMusic.play();
+        this.model.titleMusicPlaying = true;
+      }
     }
 
     if (this.model.soundOn === false) {
