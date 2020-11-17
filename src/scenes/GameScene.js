@@ -7,7 +7,7 @@ export default class GameScene extends Phaser.Scene {
 
   preload() {
     // load Images Here
-    this.load.image('titleScreen', 'titleScreen.png');
+    this.load.image('titleScreen', './Backgrounds/titleScreen.png');
   }
 
   create() {

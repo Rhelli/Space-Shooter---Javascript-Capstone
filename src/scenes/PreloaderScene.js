@@ -70,18 +70,18 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(4000, this.ready, [], this);
 
-    this.load.image('titleScreen', 'titleScreen.png');
-    this.load.image('playButton', 'playButton.png');
-    this.load.image('playButtonFocus', 'playButtonFocus.png');
-    this.load.image('optionsButton', 'optionsButton.png');
-    this.load.image('optionsButtonFocus', 'optionsButtonFocus.png');
-    this.load.image('creditsButton', 'creditsButton.png');
-    this.load.image('creditsButtonFocus', 'creditsButtonFocus.png');
-    this.load.image('checkbox', 'checkbox.png');
-    this.load.image('checkboxChecked', 'checkboxChecked.png');
-    this.load.image('menuButton', 'menuButton.png');
-    this.load.image('menuButtonFocus', 'menuButtonFocus.png');
-    this.load.audio('titleMusic', ['titleMusic.ogg']);
+    this.load.image('titleScreen', './Backgrounds/titleScreen.png');
+    this.load.image('playButton', './Buttons/playButton.png');
+    this.load.image('playButtonFocus', './Buttons/playButtonFocus.png');
+    this.load.image('optionsButton', './Buttons/optionsButton.png');
+    this.load.image('optionsButtonFocus', './Buttons/optionsButtonFocus.png');
+    this.load.image('creditsButton', './Buttons/creditsButton.png');
+    this.load.image('creditsButtonFocus', './Buttons/creditsButtonFocus.png');
+    this.load.image('checkbox', './Buttons/checkbox.png');
+    this.load.image('checkboxChecked', './Buttons/checkboxChecked.png');
+    this.load.image('menuButton', './Buttons/menuButton.png');
+    this.load.image('menuButtonFocus', './Buttons/menuButtonFocus.png');
+    this.load.audio('titleMusic', ['./Music/titleMusic.ogg']);
   }
 
   init() {
