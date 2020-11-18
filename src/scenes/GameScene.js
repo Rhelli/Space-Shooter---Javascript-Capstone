@@ -1,5 +1,10 @@
 import 'phaser';
 import Player from '../entities/Player';
+import UFO from '../entities/UFO';
+import Ninja from '../entities/Ninja';
+import Paranoid from '../entities/Paranoid';
+import Saboteur from '../entities/Saboteur';
+import Lightning from '../entities/Lightning';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -12,6 +17,7 @@ export default class GameScene extends Phaser.Scene {
     this.add.image(400, 400, 'background1');
     this.add.image(400, 400, 'background3');
     this.add.image(400, 400, 'background4');
+    this.add.image(400, 400, 'background5');
     this.add.image(400, 400, 'background6');
     this.add.image(400, 400, 'background7');
 
@@ -116,7 +122,47 @@ export default class GameScene extends Phaser.Scene {
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+    this.enemies = this.add.group();
+    this.ufoLasers = this.add.group();
+    this.ninjaLasers = this.add.group();
+    this.paranoidLasers = this.add.group();
+    this.saboteurLasers = this.add.group();
+    this.lightningLasers = this.add.group();
+    this.playerLasers = this.add.group();
+
+    this.time.addEvent({
+      delay: 2500,
+      callback: () => {
+        const gunship1 = new Saboteur(
+          this,
+          Phaser.Math.Between(0, this.game.config.width),
+          0
+        );
+        this.enemies.add(gunship1);
+      },
+      callbackScope: this,
+      loop: true,
+    });
+
+    this.time.addEvent({
+      delay: 4000,
+      callback: () => {
+        const gunship2 = new Paranoid(
+          this,
+          Phaser.Math.Between(this.game.config.width / 4, this.game.config.width / 1.2),
+          0
+        );
+        this.enemies.add(gunship2);
+      },
+      callbackScope: this,
+      loop: true,
+    });
+
+
   }
+
+
 
   update() {
     this.player.update();

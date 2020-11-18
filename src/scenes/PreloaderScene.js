@@ -90,6 +90,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('background2', './backgrounds/bkgd_2.png');
     this.load.image('background3', './backgrounds/bkgd_3.png');
     this.load.image('background4', './backgrounds/bkgd_4.png');
+    this.load.image('background5', './backgrounds/bkgd_5.png');
     this.load.image('background6', './backgrounds/bkgd_6.png');
     this.load.image('background7', './backgrounds/bkgd_7.png');
 
