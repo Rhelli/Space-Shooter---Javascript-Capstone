@@ -22,12 +22,14 @@ export default class Paranoid extends Entity {
       loop: true,
     });
 
+    this.play('paranoid');
+  }
+
+  onDestroy() {
     if (this.shootTimer !== undefined) {
       if (this.shootTimer) {
         this.shootTimer.remove(false);
       }
     }
-
-    this.play('paranoid');
   }
 }

@@ -4,7 +4,7 @@ import Entity from './Entity';
 export default class Ninja extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'ninja', 'Ninja');
-    this.body.velocity.y = Phaser.Math.Between(50, 100);
+    this.body.velocity.y = Phaser.Math.Between(60, 80);
 
     this.states = {
       MOVE_DOWN: 'MOVE_DOWN',
@@ -26,13 +26,13 @@ export default class Ninja extends Entity {
         this.state = this.states.CHASE;
       }
 
-      if (this.state == this.states.CHASE) {
+      if (this.state === this.states.CHASE) {
         const directionX = this.scene.player.x - this.x;
         const directionY = this.scene.player.y - this.y;
 
-        const angle = Math.atan2(directionY, directionX);
+        let angle = Math.atan2(directionY, directionX);
 
-        const speed = 100;
+        const speed = 200;
         this.body.setVelocity(
           Math.cos(angle) * speed,
           Math.sin(angle) * speed,

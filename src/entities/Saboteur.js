@@ -22,12 +22,14 @@ export default class Saboteur extends Entity {
       loop: true,
     });
 
+    this.play('saboteur');
+  }
+
+  onDestroy() {
     if (this.shootTimer !== undefined) {
       if (this.shootTimer) {
         this.shootTimer.remove(false);
       }
     }
-
-    this.play('saboteur');
   }
 }

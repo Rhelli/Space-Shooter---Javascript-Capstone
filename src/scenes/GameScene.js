@@ -114,7 +114,7 @@ export default class GameScene extends Phaser.Scene {
       this,
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      'player'
+      'player',
     );
 
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -133,36 +133,76 @@ export default class GameScene extends Phaser.Scene {
 
     this.time.addEvent({
       delay: 2500,
+
+
+      //callback: () => {
+      //  const gunship1 = new Saboteur(
+      //    this,
+      //    Phaser.Math.Between(0, this.game.config.width),
+      //    0
+      //  );
+      //  this.enemies.add(gunship1);
+      //},
+
       callback: () => {
-        const gunship1 = new Saboteur(
-          this,
-          Phaser.Math.Between(0, this.game.config.width),
-          0
-        );
-        this.enemies.add(gunship1);
+        let enemy = null;
+
+        if (Phaser.Math.Between(0, 20) >= 6) {
+          enemy = new Saboteur(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          )
+        } else if (Phaser.Math.Between(0, 20) >= 8) {
+          enemy = new Paranoid(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          )
+        } else if (Phaser.Math.Between(0, 20) >= 10) {
+          if (this.getEnemiesByType('UFO').length < 3 && this.getEnemiesByType('Ninja').length < 2) {
+            enemy = new UFO(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          }
+        } else if (Phaser.Math.Between(0, 20) >= 12) {
+          if (this.getEnemiesByType('UFO').length < 3 && this.getEnemiesByType('Ninja').length < 2) {
+            enemy = new Ninja(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          }
+        } else {
+          enemy = new Lightning(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        }
+
+        if (enemy !== null) {
+          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+          this.enemies.add(enemy);
+        }
       },
       callbackScope: this,
       loop: true,
     });
-
-    this.time.addEvent({
-      delay: 4000,
-      callback: () => {
-        const gunship2 = new Paranoid(
-          this,
-          Phaser.Math.Between(this.game.config.width / 4, this.game.config.width / 1.2),
-          0
-        );
-        this.enemies.add(gunship2);
-      },
-      callbackScope: this,
-      loop: true,
-    });
-
-
   }
 
-
+  getEnemiesByType(type) {
+    const arr = [];
+    for (let i = 0; i < this.enemies.getChildren().length; i++) {
+      const enemy = this.enemies.getChildren()[i];
+      if (enemy.getData('type') === type) {
+        arr.push(enemy);
+      }
+    }
+    return arr;
+  }
 
   update() {
     this.player.update();
