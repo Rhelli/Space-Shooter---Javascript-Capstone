@@ -179,7 +179,7 @@ export default class GameScene extends Phaser.Scene {
           enemy = new Lightning(
             this,
             Phaser.Math.Between(0, this.game.config.width),
-            0,
+            0
           );
         }
 
