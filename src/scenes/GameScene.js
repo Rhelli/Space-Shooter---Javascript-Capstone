@@ -1,4 +1,5 @@
 import 'phaser';
+import Player from '../objects/Player';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -102,5 +103,12 @@ export default class GameScene extends Phaser.Scene {
       ]
     };
 
+
+    this.player = new Player(
+      this,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      'player'
+    );
   }
 }
