@@ -81,6 +81,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('checkboxChecked', './buttons/checkboxChecked.png');
     this.load.image('menuButton', './buttons/menuButton.png');
     this.load.image('menuButtonFocus', './buttons/menuButtonFocus.png');
+    this.load.image('restartButton', './buttons/restartButton.png');
+    this.load.image('restartButtonFocus', './buttons/restartButtonFocus.png')
 
     // GAME SCENE ASSETS
     this.load.image('background0', './backgrounds/bkgd_0.png');
@@ -107,94 +109,122 @@ export default class PreloaderScene extends Phaser.Scene {
 
     // Enemy Ships & Lasers
     // Ninja Ship
-    this.load.spritesheet('enemy1', './ships/Ninja.png', {
+    this.load.spritesheet('ninja', './ships/Ninja.png', {
       frameWidth: 32,
       frameHeight: 32
     });
     // Ninja Laser
-    this.load.image('enemy1Lasers1', './lasers/blue/1');
-    this.load.image('enemy1Lasers2', './lasers/blue/2');
-    this.load.image('enemy1Lasers3', './lasers/blue/3');
-    this.load.image('enemy1Lasers4', './lasers/blue/4');
-    this.load.image('enemy1Lasers5', './lasers/blue/5');
-    this.load.image('enemy1Lasers6', './lasers/blue/6');
-    this.load.image('enemy1Lasers7', './lasers/blue/7');
+    this.load.image('ninjaLaser1', './lasers/blue/1.png');
+    this.load.image('ninjaLaser2', './lasers/blue/2.png');
+    this.load.image('ninjaLaser3', './lasers/blue/3.png');
+    this.load.image('ninjaLaser4', './lasers/blue/4.png');
+    this.load.image('ninjaLaser5', './lasers/blue/5.png');
+    this.load.image('ninjaLaser6', './lasers/blue/6.png');
+    this.load.image('ninjaLaser7', './lasers/blue/7.png');
 
     //UFO Ship
-    this.load.spritesheet('enemy2', './ships/UFO.png', {
+    this.load.spritesheet('ufo', './ships/UFO.png', {
       frameWidth: 32,
       frameHeight: 32
     });
     // UFO Lasers
-    this.load.image('enemy1Lasers1', './lasers/red/1');
-    this.load.image('enemy1Lasers2', './lasers/red/2');
-    this.load.image('enemy1Lasers3', './lasers/red/3');
-    this.load.image('enemy1Lasers4', './lasers/red/4');
-    this.load.image('enemy1Lasers5', './lasers/red/5');
-    this.load.image('enemy1Lasers6', './lasers/red/6');
-    this.load.image('enemy1Lasers7', './lasers/red/7');
+    this.load.image('ufoLasers1', './lasers/red/1.png');
+    this.load.image('ufoLasers2', './lasers/red/2.png');
+    this.load.image('ufoLasers3', './lasers/red/3.png');
+    this.load.image('ufoLasers4', './lasers/red/4.png');
+    this.load.image('ufoLasers5', './lasers/red/5.png');
+    this.load.image('ufoLasers6', './lasers/red/6.png');
+    this.load.image('ufoLasers7', './lasers/red/7.png');
 
     // Paranoid Ship
-    this.load.spritesheet('enemy3', './ships/Paranoid.png', {
+    this.load.spritesheet('paranoid', './ships/Paranoid.png', {
       frameWidth: 32,
       frameHeight: 32
     });
     // Paranoid Lasers
-    this.load.image('enemy3Lasers1', './lasers/green/1');
-    this.load.image('enemy3Lasers2', './lasers/green/2');
-    this.load.image('enemy3Lasers3', './lasers/green/3');
-    this.load.image('enemy3Lasers4', './lasers/green/4');
-    this.load.image('enemy3Lasers5', './lasers/green/5');
-    this.load.image('enemy3Lasers6', './lasers/green/6');
+    this.load.image('paranoidLasers1', './lasers/green/1.png');
+    this.load.image('paranoidLasers2', './lasers/green/2.png');
+    this.load.image('paranoidLasers3', './lasers/green/3.png');
+    this.load.image('paranoidLasers4', './lasers/green/4.png');
+    this.load.image('paranoidLasers5', './lasers/green/5.png');
+    this.load.image('paranoidLasers6', './lasers/green/6.png');
 
     // Saboteur Ship
-    this.load.spritesheet('enemy4', './ships/Saboteur.png', {
+    this.load.spritesheet('saboteur', './ships/Saboteur.png', {
       frameWidth: 32,
       frameHeight: 32
     });
     // Saboteur Lasers
-    this.load.image('enemy4Lasers1', './lasers/pink/1');
-    this.load.image('enemy4Lasers2', './lasers/pink/2');
-    this.load.image('enemy4Lasers3', './lasers/pink/3');
-    this.load.image('enemy4Lasers4', './lasers/pink/4');
-    this.load.image('enemy4Lasers5', './lasers/pink/5');
-    this.load.image('enemy4Lasers6', './lasers/pink/6');
-    this.load.image('enemy4Lasers7', './lasers/pink/7');
+    this.load.image('saboteurLasers1', './lasers/pink/1.png');
+    this.load.image('saboteurLasers2', './lasers/pink/2.png');
+    this.load.image('saboteurLasers3', './lasers/pink/3.png');
+    this.load.image('saboteurLasers4', './lasers/pink/4.png');
+    this.load.image('saboteurLasers5', './lasers/pink/5.png');
+    this.load.image('saboteurLasers6', './lasers/pink/6.png');
+    this.load.image('saboteurLasers7', './lasers/pink/7.png');
 
     // Lightning Ship
-    this.load.spritesheet('enemy5', './ships/Lightning.png', {
+    this.load.spritesheet('lightning', './ships/Lightning.png', {
       frameWidth: 32,
       frameHeight: 32
     });
     // Lightning Lasers
-    this.load.image('enemy5Lasers1', './lasers/yellow/1');
-    this.load.image('enemy5Lasers2', './lasers/yellow/2');
-    this.load.image('enemy5Lasers3', './lasers/yellow/3');
-    this.load.image('enemy5Lasers4', './lasers/yellow/4');
-    this.load.image('enemy5Lasers5', './lasers/yellow/5');
-    this.load.image('enemy5Lasers6', './lasers/yellow/6');
-    this.load.image('enemy5Lasers7', './lasers/yellow/7');
-    this.load.image('enemy5Lasers8', './lasers/yellow/8');
-    this.load.image('enemy5Lasers9', './lasers/yellow/9');
+    this.load.image('lightningLasers1', './lasers/yellow/1.png');
+    this.load.image('lightningLasers2', './lasers/yellow/2.png');
+    this.load.image('lightningLasers3', './lasers/yellow/3.png');
+    this.load.image('lightningLasers4', './lasers/yellow/4.png');
+    this.load.image('lightningLasers5', './lasers/yellow/5.png');
+    this.load.image('lightningLasers6', './lasers/yellow/6.png');
+    this.load.image('lightningLasers7', './lasers/yellow/7.png');
+    this.load.image('lightningLasers8', './lasers/yellow/8.png');
+    this.load.image('lightningLasers9', './lasers/yellow/9.png');
 
     // Player Ship
-    this.load.spritesheet('playerShip', './ships/Lighter.png', {
+    this.load.spritesheet('player', './ships/Lighter.png', {
       frameWidth: 32,
       frameHeight: 32
     });
 
     // Player lasers
-    this.load.image('playerLaser1', './lasers/turq/1');
-    this.load.image('playerLaser2', './lasers/turq/2');
-    this.load.image('playerLaser3', './lasers/turq/3');
-    this.load.image('playerLaser4', './lasers/turq/4');
-    this.load.image('playerLaser5', './lasers/turq/5');
-    this.load.image('playerLaser6', './lasers/turq/6');
-    this.load.image('playerLaser7', './lasers/turq/7');
-    this.load.image('playerLaser8', './lasers/turq/8');
-    this.load.image('playerLaser9', './lasers/turq/9');
+    this.load.image('playerLaser1', './lasers/turq/1.png');
+    this.load.image('playerLaser2', './lasers/turq/2.png');
+    this.load.image('playerLaser3', './lasers/turq/3.png');
+    this.load.image('playerLaser4', './lasers/turq/4.png');
+    this.load.image('playerLaser5', './lasers/turq/5.png');
+    this.load.image('playerLaser6', './lasers/turq/6.png');
+    this.load.image('playerLaser7', './lasers/turq/7.png');
+    this.load.image('playerLaser8', './lasers/turq/8.png');
+    this.load.image('playerLaser9', './lasers/turq/9.png');
 
+    // SFX
+    this.load.audio('laser1', './sound/lasers/Laser_00.mp3')
+    this.load.audio('laser2', './sound/lasers/Laser_01.mp3')
+    this.load.audio('laser3', './sound/lasers/Laser_02.mp3')
+    this.load.audio('laser4', './sound/lasers/Laser_03.mp3')
+    this.load.audio('laser5', './sound/lasers/Laser_04.mp3')
+    this.load.audio('laser6', './sound/lasers/Laser_05.mp3')
+    this.load.audio('laser7', './sound/lasers/Laser_06.mp3')
+    this.load.audio('laser8', './sound/lasers/Laser_07.mp3')
+    this.load.audio('laser9', './sound/lasers/Laser_08.mp3')
+    this.load.audio('laser10', './sound/lasers/Laser_09.mp3')
+
+    this.load.audio('explosion1', './sound/explosions/explosion01.wav')
+    this.load.audio('explosion2', './sound/explosions/explosion02.wav')
+    this.load.audio('explosion3', './sound/explosions/explosion03.wav')
+    this.load.audio('explosion4', './sound/explosions/explosion04.wav')
+    this.load.audio('explosion5', './sound/explosions/explosion05.wav')
+    this.load.audio('explosion6', './sound/explosions/explosion06.wav')
+    this.load.audio('explosion7', './sound/explosions/explosion07.wav')
+    this.load.audio('explosion8', './sound/explosions/explosion08.wav')
+    this.load.audio('explosion9', './sound/explosions/explosion09.wav')
+
+    this.load.audio('buttonHover', './sound/buttons/buttonHover.ogg');
+    this.load.audio('buttonSelect', './sound/buttons/buttonSelect.ogg');
+    this.load.audio('gameStart', './sound/buttons/gameStart.mp3');
+
+    // Game Music
     this.load.audio('titleMusic', ['./music/titleMusic.ogg']);
+    this.load.audio('gameMusic', './music/gameMusic.mp3');
   }
 
   init() {
