@@ -1,5 +1,5 @@
 import 'phaser';
-import Player from '../objects/Player';
+import Player from '../entities/Player';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {

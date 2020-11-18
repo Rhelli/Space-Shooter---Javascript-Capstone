@@ -1,4 +1,4 @@
-import Entity from './Entities';
+import Entity from './Entity';
 
 export default class Player extends Entity {
   constructor(scene, x, y, key) {
