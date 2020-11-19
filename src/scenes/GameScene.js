@@ -5,6 +5,7 @@ import Ninja from '../entities/Ninja';
 import Paranoid from '../entities/Paranoid';
 import Saboteur from '../entities/Saboteur';
 import Lightning from '../entities/Lightning';
+import ScrollingBackground from '../objects/ScrollingBackground';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -12,14 +13,14 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(400, 400, 'background0');
-    this.add.image(400, 400, 'background2');
-    this.add.image(400, 400, 'background1');
-    this.add.image(400, 400, 'background3');
-    this.add.image(400, 400, 'background4');
-    this.add.image(400, 400, 'background5');
-    this.add.image(400, 400, 'background6');
-    this.add.image(400, 400, 'background7');
+    //this.add.image(400, 400, 'background0');
+    //this.add.image(400, 400, 'background2');
+    //this.add.image(400, 400, 'background1');
+    ////this.add.image(400, 400, 'background3');
+    ////this.add.image(400, 400, 'background4');
+    //this.add.image(400, 400, 'background5');
+    //this.add.image(400, 400, 'background6');
+    //this.add.image(400, 400, 'background7');
 
     this.anims.create({
       key: 'ninja',
@@ -102,6 +103,13 @@ export default class GameScene extends Phaser.Scene {
         this.sound.add('laser7', { volume: 0.5}),
       ]
     };
+
+    this.allBackgrounds = ['background1', 'background2', 'background3', 'background4', 'background5', 'background6', 'background7'];
+    this.background = [];
+    for (let i = 0; i < this.allBackgrounds.length; i++) {
+      const bg = new ScrollingBackground(this, this.allBackgrounds[i], i * 10);
+      this.background.push(bg);
+    }
 
 
     this.player = new Player(
