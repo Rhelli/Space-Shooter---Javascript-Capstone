@@ -15,7 +15,7 @@ export default class UFO extends Entity {
 
     this.shootTimer = this.scene.time.addEvent({
 
-      delay: 800,
+      delay: 2000,
       callback: () => {
         const laser = new UFOLaser(
           this.scene,
@@ -23,7 +23,7 @@ export default class UFO extends Entity {
           this.y,
         );
         laser.setScale(this.scaleX);
-        this.scene.saboteurLasers.add(laser);
+        this.scene.enemyLasers.add(laser);
       },
       callbackScope: this,
       loop: true,

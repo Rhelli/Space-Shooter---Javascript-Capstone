@@ -8,7 +8,7 @@ export default class Paranoid extends Entity {
     this.body.velocity.y = Phaser.Math.Between(25, 70);
 
     this.shootTimer = this.scene.time.addEvent({
-      delay: 2000,
+      delay: 2500,
       callback: () => {
         const laser = new ParanoidLaser(
           this.scene,
@@ -16,7 +16,7 @@ export default class Paranoid extends Entity {
           this.y,
         );
         laser.setScale(this.scaleX);
-        this.scene.paranoidLasers.add(laser);
+        this.scene.enemyLasers.add(laser);
       },
       callbackScope: this,
       loop: true,

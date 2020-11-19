@@ -14,7 +14,7 @@ export default class Ninja extends Entity {
     this.state = this.states.MOVE_DOWN;
 
     this.shootTimer = this.scene.time.addEvent({
-      delay: Phaser.Math.Between(300, 600),
+      delay: 1000,
       callback: () => {
         const laser = new NinjaLaser(
           this.scene,
@@ -22,7 +22,7 @@ export default class Ninja extends Entity {
           this.y,
         );
         laser.setScale(this.scaleX);
-        this.scene.saboteurLasers.add(laser);
+        this.scene.enemyLasers.add(laser);
       },
       callbackScope: this,
       loop: true,

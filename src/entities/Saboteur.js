@@ -8,7 +8,7 @@ export default class Saboteur extends Entity {
     this.body.velocity.y = Phaser.Math.Between(50, 100);
 
     this.shootTimer = this.scene.time.addEvent({
-      delay: 1500,
+      delay: 2200,
       callback: () => {
         const laser = new SaboteurLaser(
           this.scene,
@@ -16,7 +16,7 @@ export default class Saboteur extends Entity {
           this.y,
         );
         laser.setScale(this.scaleX);
-        this.scene.saboteurLasers.add(laser);
+        this.scene.enemyLasers.add(laser);
       },
       callbackScope: this,
       loop: true,
