@@ -111,7 +111,6 @@ export default class GameScene extends Phaser.Scene {
       this.background.push(bg);
     }
 
-
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
