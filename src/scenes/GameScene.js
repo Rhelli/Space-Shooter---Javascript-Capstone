@@ -136,7 +136,7 @@ export default class GameScene extends Phaser.Scene {
 
 
       //callback: () => {
-      //  const gunship1 = new Saboteur(
+      //  const gunship1 = new UFO(
       //    this,
       //    Phaser.Math.Between(0, this.game.config.width),
       //    0
@@ -147,34 +147,30 @@ export default class GameScene extends Phaser.Scene {
       callback: () => {
         let enemy = null;
 
-        if (Phaser.Math.Between(0, 20) >= 6) {
+        if (Phaser.Math.Between(0, 10) >= 3) {
           enemy = new Saboteur(
             this,
             Phaser.Math.Between(0, this.game.config.width),
             0,
           )
-        } else if (Phaser.Math.Between(0, 20) >= 8) {
+        } else if (Phaser.Math.Between(0, 10) >= 5) {
           enemy = new Paranoid(
             this,
             Phaser.Math.Between(0, this.game.config.width),
             0,
           )
-        } else if (Phaser.Math.Between(0, 20) >= 10) {
-          if (this.getEnemiesByType('UFO').length < 3 && this.getEnemiesByType('Ninja').length < 2) {
-            enemy = new UFO(
-              this,
-              Phaser.Math.Between(0, this.game.config.width),
-              0,
-            );
-          }
-        } else if (Phaser.Math.Between(0, 20) >= 12) {
-          if (this.getEnemiesByType('UFO').length < 3 && this.getEnemiesByType('Ninja').length < 2) {
-            enemy = new Ninja(
-              this,
-              Phaser.Math.Between(0, this.game.config.width),
-              0,
-            );
-          }
+        } else if (Phaser.Math.Between(0, 10) >= 6) {
+          enemy = new UFO(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        } else if (Phaser.Math.Between(0, 7) >= 7) {
+          enemy = new Ninja(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
         } else {
           enemy = new Lightning(
             this,
@@ -216,6 +212,12 @@ export default class GameScene extends Phaser.Scene {
       this.player.moveLeft();
     } else if (this.keyD.isDown) {
       this.player.moveRight();
+    }
+
+    for (let i = 0; i < this.enemies.getChildren().length; i++) {
+      const enemy = this.enemies.getChildren()[i];
+
+      enemy.update();
     }
   }
 }

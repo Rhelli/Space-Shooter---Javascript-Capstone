@@ -22,7 +22,7 @@ export default class Ninja extends Entity {
         this.y,
         this.scene.player.x,
         this.scene.player.y,
-      ) < 320) {
+      ) < 220) {
         this.state = this.states.CHASE;
       }
 
@@ -30,9 +30,9 @@ export default class Ninja extends Entity {
         const directionX = this.scene.player.x - this.x;
         const directionY = this.scene.player.y - this.y;
 
-        let angle = Math.atan2(directionY, directionX);
+        const angle = Math.atan2(directionY, directionX);
 
-        const speed = 200;
+        const speed = 150;
         this.body.setVelocity(
           Math.cos(angle) * speed,
           Math.sin(angle) * speed,

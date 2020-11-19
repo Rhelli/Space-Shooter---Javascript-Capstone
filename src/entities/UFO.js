@@ -22,7 +22,7 @@ export default class UFO extends Entity {
         this.y,
         this.scene.player.x,
         this.scene.player.y,
-      ) < 320) {
+      ) < 400) {
         this.state = this.states.CHASE;
       }
 
