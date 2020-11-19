@@ -97,15 +97,9 @@ export default class GameScene extends Phaser.Scene {
         this.sound.add('explosion9'),
       ],
       laser: [
-        this.sound.add('laser1'),
-        this.sound.add('laser2'),
-        this.sound.add('laser3'),
-        this.sound.add('laser4'),
-        this.sound.add('laser5'),
-        this.sound.add('laser6'),
-        this.sound.add('laser7'),
-        this.sound.add('laser8'),
-        this.sound.add('laser9'),
+        this.sound.add('laser2', { volume: 0.5}),
+        this.sound.add('laser4', { volume: 0.5}),
+        this.sound.add('laser7', { volume: 0.5}),
       ]
     };
 
@@ -130,6 +124,7 @@ export default class GameScene extends Phaser.Scene {
     this.saboteurLasers = this.add.group();
     this.lightningLasers = this.add.group();
     this.playerLasers = this.add.group();
+    this.enemyLasers = [this.ufoLasers, this.ninjaLasers, this.paranoidLasers, this.saboteurLasers, this.lightningLasers];
 
     this.time.addEvent({
       delay: 1700,
@@ -213,11 +208,56 @@ export default class GameScene extends Phaser.Scene {
     } else if (this.keyD.isDown) {
       this.player.moveRight();
     }
+    if (this.keySpace.isDown) {
+      this.player.setData('isShooting', true);
+    } else {
+      this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
+      this.player.setData('isShooting', false);
+    }
 
     for (let i = 0; i < this.enemies.getChildren().length; i++) {
       const enemy = this.enemies.getChildren()[i];
-
       enemy.update();
+
+      if (enemy.x < -enemy.displayWidth ||
+        enemy.x > this.game.config.width + enemy.displayWidth ||
+        enemy.y < -enemy.displayHeight * 4 ||
+        enemy.y > this.game.config.height + enemy.displayHeight) {
+        if (enemy) {
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
+          enemy.onDestroy();
+        }
+      }
+    }
+
+    for (let i = 0; i < this.enemyLasers; i++) {
+      for (let j = 0; j < this.enemyLasers[i].getChildren().length; j++) {
+        const laser = this.enemyLasers[i].getChildren()[j];
+        laser.update();
+
+        if (laser.x < -laser.displayWidth ||
+          laser.x > this.game.config.width + laser.displayWidth ||
+          laser.y < -laser.displayHeight * 4 ||
+          laser.y > this.game.config.height + laser.displayHeight) {
+          if (laser) {
+            laser.destroy();
+          }
+        }
+      }
+    }
+
+    for (let i = 0; i < this.playerLasers.getChildren().length; i++) {
+      const laser = this.playerLasers.getChildren()[i];
+      if (laser.x < -laser.displayWidth ||
+        laser.x > this.game.config.width + laser.displayWidth ||
+        laser.y < -laser.displayHeight * 4 ||
+        laser.y > this.game.config.height + laser.displayHeight) {
+        if (laser) {
+          laser.destroy();
+        }
+      }
     }
   }
 }

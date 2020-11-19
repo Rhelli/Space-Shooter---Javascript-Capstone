@@ -8,7 +8,7 @@ export default class Lightning extends Entity {
     this.body.velocity.y = Phaser.Math.Between(50, 100);
 
     this.shootTimer = this.scene.time.addEvent({
-      delay: 8000,
+      delay: 6000,
       callback: () => {
         const laser = new LightningLaser(
           this.scene,

@@ -14,7 +14,8 @@ export default class UFO extends Entity {
     this.state = this.states.MOVE_DOWN;
 
     this.shootTimer = this.scene.time.addEvent({
-      delay: Phaser.Math.Between(500, 1000),
+
+      delay: 800,
       callback: () => {
         const laser = new UFOLaser(
           this.scene,
