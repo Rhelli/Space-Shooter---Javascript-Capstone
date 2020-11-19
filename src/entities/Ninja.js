@@ -1,5 +1,6 @@
 import 'phaser';
 import Entity from './Entity';
+import NinjaLaser from '../weapons/NinjaLaser';
 
 export default class Ninja extends Entity {
   constructor(scene, x, y) {
@@ -11,6 +12,21 @@ export default class Ninja extends Entity {
       CHASE: 'CHASE',
     };
     this.state = this.states.MOVE_DOWN;
+
+    this.shootTimer = this.scene.time.addEvent({
+      delay: Phaser.Math.Between(300, 600),
+      callback: () => {
+        const laser = new NinjaLaser(
+          this.scene,
+          this.x,
+          this.y,
+        );
+        laser.setScale(this.scaleX);
+        this.scene.saboteurLasers.add(laser);
+      },
+      callbackScope: this,
+      loop: true,
+    });
 
     this.play('ninja');
   }
@@ -24,6 +40,7 @@ export default class Ninja extends Entity {
         this.scene.player.y,
       ) < 220) {
         this.state = this.states.CHASE;
+        this.shootTimer.remove(true);
       }
 
       if (this.state === this.states.CHASE) {
@@ -43,6 +60,14 @@ export default class Ninja extends Entity {
         } else {
           this.angle += 5;
         }
+      }
+    }
+  }
+
+  onDestroy() {
+    if (this.shootTimer !== undefined) {
+      if (this.shootTimer) {
+        this.shootTimer.remove(false);
       }
     }
   }

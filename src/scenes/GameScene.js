@@ -132,11 +132,11 @@ export default class GameScene extends Phaser.Scene {
     this.playerLasers = this.add.group();
 
     this.time.addEvent({
-      delay: 2500,
+      delay: 1700,
 
 
       //callback: () => {
-      //  const gunship1 = new UFO(
+      //  const gunship1 = new Ninja(
       //    this,
       //    Phaser.Math.Between(0, this.game.config.width),
       //    0
