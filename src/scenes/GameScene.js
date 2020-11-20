@@ -76,6 +76,27 @@ export default class GameScene extends Phaser.Scene {
       repeat: 0
     });
 
+    this.anims.create({
+      key: 'explosion4',
+      frames: this.anims.generateFrameNumbers('explosion4'),
+      frameRate: 120,
+      repeat: 0
+    });
+
+    this.anims.create({
+      key: 'explosion5',
+      frames: this.anims.generateFrameNumbers('explosion5'),
+      frameRate: 120,
+      repeat: 0
+    });
+
+    this.anims.create({
+      key: 'explosion6',
+      frames: this.anims.generateFrameNumbers('explosion6'),
+      frameRate: 120,
+      repeat: 0
+    });
+
     this.sfx = {
       explosions: [
         this.sound.add('explosion1'),
@@ -110,7 +131,7 @@ export default class GameScene extends Phaser.Scene {
     );
 
     this.playerScore = this.add.text(16, 750, 'score : 0', {
-      fontFamily: 'Visitor TT2 BRK, sans-serif, monospaces',
+      fontFamily: 'Visitor TT2 BRK, sans-serif, monospace',
       fontSize: '46px',
       fontStyle: 'normal',
       color: '#9FA8DA',
@@ -118,6 +139,16 @@ export default class GameScene extends Phaser.Scene {
       stroke: '#fff',
       strokeThickness: 1,
     });
+
+    this.playerMessages = this.add.text(16, 700, '', {
+      fontFamily: 'Visitor TT1 BRK, sans-serif, monospace',
+      fontSize: '38px',
+      fontStyle: 'normal',
+      color: '#00FF99',
+      align: 'center',
+      stroke: '#FDFEFE',
+      strokeThickness: 1,
+    })
 
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -216,6 +247,52 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
+  scoreIntervals() {
+    const count = this.sys.game.globals.score;
+    if (count === 3) {
+      this.playerMessages.setText("That's 10 down pilot. Keep it up!");
+      this.tweens.add({
+        targets: this.fiftyScore,
+        scaleX: 1.2,
+        scaleY: 1.2,
+        yoyo: true,
+        duration: 5000,
+        repeat: 0,
+        onComplete: () => {
+          setTimeout(() => {
+            this.playerMessages.setText('');
+          }, 4000);
+        }
+      })
+    } else if (count === 20) {
+      this.playerMessages.setText("That's 20 more. Keep focused!");
+      this.tweens.add({
+        targets: this.fiftyScore,
+        scaleX: 1.2,
+        scaleY: 1.2,
+        yoyo: true,
+        duration: 1000,
+        repeat: 0,
+        onComplete: () => {
+          this.playerMessages.setText('');
+        }
+      })
+    } else if (count === 30) {
+      this.playerMessages.setText("You've downed 30 now! You're on fire!");
+      this.tweens.add({
+        targets: this.fiftyScore,
+        scaleX: 1.2,
+        scaleY: 1.2,
+        yoyo: true,
+        duration: 1000,
+        repeat: 0,
+        onComplete: () => {
+          this.playerMessages.setText('');
+        }
+      })
+    }
+  }
+
   increaseScore(enemy) {
     if (enemy.getData('type') === 'Paranoid' || enemy.getData('type') === 'Saboteur') {
       this.sys.game.globals.score += 1;
@@ -225,6 +302,7 @@ export default class GameScene extends Phaser.Scene {
       this.sys.game.globals.score += 4;
     }
     this.sys.game.globals.count++;
+    this.scoreIntervals();
 
     this.playerScore.setText(`score : ${this.sys.game.globals.score}`);
     this.tweens.add({
@@ -239,25 +317,6 @@ export default class GameScene extends Phaser.Scene {
         this.playerScore.scaleY = this.playerScore.scaleX;
       }
     })
-  }
-
-  scoreIntervals() {
-    this.fiftyScore = this.add.text(0, 0, "That's 50 down pilot. Keep it up!", { fontSize: '36px', fill: '#F44336', font: 'Visitor TT2 BRK' });
-    if (this.sys.game.globals.count >= 5) {
-      this.tweens.add({
-        y: 16,
-        x: 730,
-        targets: this.fiftyScore,
-        scaleX: 1.2,
-        scaleY: 1.2,
-        yoyo: true,
-        duration: 1000,
-        repeat: 0,
-        onComplete: () => {
-          this.destroy();
-        }
-      })
-    }
   }
 
   resetScore() {

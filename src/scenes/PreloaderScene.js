@@ -108,6 +108,18 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 128,
       frameHeight: 128
     });
+    this.load.spritesheet('explosion4', './explosions/explosion4.png', {
+      frameWidth: 256,
+      frameHeight: 256
+    });
+    this.load.spritesheet('explosion5', './explosions/explosion5.png', {
+      frameWidth: 256,
+      frameHeight: 256
+    });
+    this.load.spritesheet('explosion6', './explosions/explosion6.png', {
+      frameWidth: 256,
+      frameHeight: 256
+    });
 
     // Enemy Ships & Lasers
     // Ninja Ship
