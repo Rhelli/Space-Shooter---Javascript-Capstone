@@ -225,7 +225,6 @@ export default class GameScene extends Phaser.Scene {
 
         enemy.explode(true);
         playerLaser.destroy();
-        console.log(enemy.getData('type'));
         this.increaseScore(enemy);
       }
     });
