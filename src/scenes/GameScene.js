@@ -129,7 +129,7 @@ export default class GameScene extends Phaser.Scene {
     this.enemyLasers = this.add.group();
 
     this.time.addEvent({
-      delay: 1700,
+      delay: 1200,
 
 
       //callback: () => {
@@ -150,13 +150,13 @@ export default class GameScene extends Phaser.Scene {
             Phaser.Math.Between(0, this.game.config.width),
             0,
           )
-        } else if (Phaser.Math.Between(0, 10) >= 5) {
+        } else if (Phaser.Math.Between(0, 10) >= 4) {
           enemy = new Paranoid(
             this,
             Phaser.Math.Between(0, this.game.config.width),
             0,
           )
-        } else if (Phaser.Math.Between(0, 10) >= 6) {
+        } else if (Phaser.Math.Between(0, 10) >= 5) {
           enemy = new UFO(
             this,
             Phaser.Math.Between(0, this.game.config.width),
