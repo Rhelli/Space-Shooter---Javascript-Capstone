@@ -13,15 +13,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    //this.add.image(400, 400, 'background0');
-    //this.add.image(400, 400, 'background2');
-    //this.add.image(400, 400, 'background1');
-    ////this.add.image(400, 400, 'background3');
-    ////this.add.image(400, 400, 'background4');
-    //this.add.image(400, 400, 'background5');
-    //this.add.image(400, 400, 'background6');
-    //this.add.image(400, 400, 'background7');
-
     this.anims.create({
       key: 'ninja',
       frames: this.anims.generateFrameNumbers('ninja'),
@@ -118,6 +109,16 @@ export default class GameScene extends Phaser.Scene {
       'player',
     );
 
+    this.playerScore = this.add.text(16, 750, 'score : 0', {
+      fontFamily: 'Visitor TT2 BRK, sans-serif, monospaces',
+      fontSize: '46px',
+      fontStyle: 'normal',
+      color: '#9FA8DA',
+      align: 'left',
+      stroke: '#fff',
+      strokeThickness: 1,
+    });
+
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -193,6 +194,8 @@ export default class GameScene extends Phaser.Scene {
 
         enemy.explode(true);
         playerLaser.destroy();
+        console.log(enemy.getData('type'));
+        this.increaseScore(enemy);
       }
     });
 
@@ -213,7 +216,55 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
+  increaseScore(enemy) {
+    if (enemy.getData('type') === 'Paranoid' || enemy.getData('type') === 'Saboteur') {
+      this.sys.game.globals.score += 1;
+    } else if (enemy.getData('type') === 'UFO' || enemy.getData('type') === 'Ninja') {
+      this.sys.game.globals.score += 2;
+    } else if (enemy.getData('type') === 'Lightning') {
+      this.sys.game.globals.score += 4;
+    }
+    this.sys.game.globals.count++;
 
+    this.playerScore.setText(`score : ${this.sys.game.globals.score}`);
+    this.tweens.add({
+      targets: this.playerScore,
+      scaleX: 1.2,
+      scaleY: 1.2,
+      yoyo: true,
+      duration: 30,
+      repeat: 0,
+      onComplete: () => {
+        this.playerScore.scaleX = 1;
+        this.playerScore.scaleY = this.playerScore.scaleX;
+      }
+    })
+  }
+
+  scoreIntervals() {
+    this.fiftyScore = this.add.text(0, 0, "That's 50 down pilot. Keep it up!", { fontSize: '36px', fill: '#F44336', font: 'Visitor TT2 BRK' });
+    if (this.sys.game.globals.count >= 5) {
+      this.tweens.add({
+        y: 16,
+        x: 730,
+        targets: this.fiftyScore,
+        scaleX: 1.2,
+        scaleY: 1.2,
+        yoyo: true,
+        duration: 1000,
+        repeat: 0,
+        onComplete: () => {
+          this.destroy();
+        }
+      })
+    }
+  }
+
+  resetScore() {
+    this.sys.game.globals.score = 0;
+    this.sys.game.globals.count = 0;
+    this.playerScore.setText(this.sys.game.globals.score);
+  }
 
   getEnemiesByType(type) {
     const arr = [];
