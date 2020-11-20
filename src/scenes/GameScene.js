@@ -104,10 +104,10 @@ export default class GameScene extends Phaser.Scene {
       ]
     };
 
-    this.allBackgrounds = ['background1', 'background2', 'background3', 'background4', 'background5', 'background6', 'background7'];
+    this.allBackgrounds = ['background0', 'background1', 'background2', 'background3', 'background4', 'background5', 'background6', 'background7'];
     this.background = [];
-    for (let i = 0; i < this.allBackgrounds.length; i++) {
-      const bg = new ScrollingBackground(this, this.allBackgrounds[i], i * 10);
+    for (let i = 0; i < this.allBackgrounds.length - 1; i++) {
+      const bg = new ScrollingBackground(this, this.allBackgrounds[i], i * 8);
       this.background.push(bg);
     }
 
