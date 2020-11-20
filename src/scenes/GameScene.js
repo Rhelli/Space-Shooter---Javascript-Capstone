@@ -106,8 +106,8 @@ export default class GameScene extends Phaser.Scene {
 
     this.allBackgrounds = ['background0', 'background1', 'background2', 'background3', 'background4', 'background5', 'background6', 'background7'];
     this.background = [];
-    for (let i = 0; i < this.allBackgrounds.length - 1; i++) {
-      const bg = new ScrollingBackground(this, this.allBackgrounds[i], i * 8);
+    for (let i = 0; i < this.allBackgrounds.length; i++) {
+      const bg = new ScrollingBackground(this, this.allBackgrounds[i], i * 10);
       this.background.push(bg);
     }
 
@@ -125,11 +125,6 @@ export default class GameScene extends Phaser.Scene {
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.enemies = this.add.group();
-    //this.ufoLasers = this.add.group();
-    //this.ninjaLasers = this.add.group();
-    //this.paranoidLasers = this.add.group();
-    //this.saboteurLasers = this.add.group();
-    //this.lightningLasers = this.add.group();
     this.playerLasers = this.add.group();
     this.enemyLasers = this.add.group();
 
@@ -291,6 +286,10 @@ export default class GameScene extends Phaser.Scene {
           laser.destroy();
         }
       }
+    }
+
+    for (let i = 0; i < this.background.length; i++) {
+      this.background[i].update();
     }
   }
 }
