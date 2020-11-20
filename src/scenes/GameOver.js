@@ -3,9 +3,9 @@ import Button from '../objects/Button';
 import config from '../config/Config';
 import ScrollingBackground from '../objects/ScrollingBackground';
 
-export default class TitleScene extends Phaser.Scene {
+export default class GameOverScene extends Phaser.Scene {
   constructor() {
-    super('Title');
+    super('GameOver');
   }
 
   create() {
@@ -16,13 +16,13 @@ export default class TitleScene extends Phaser.Scene {
     }
 
     // Game Button
-    this.gameButton = new Button(this, config.width / 2, config.height / 2 + 100, 'playButton', 'playButtonFocus', 'Game', this.sfx.btnHover, this.sfx.gameStart);
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 + 50, 'restartButton', 'restartButtonFocus', 'Game', this.sfx.btnHover, this.sfx.gameStart);
 
     // Options button
-    this.optionsButton = new Button(this, config.width / 2, config.height / 2 + 180, 'optionsButton', 'optionsButtonFocus', 'Options', this.sfx.btnHover, this.sfx.btnSelect);
+    this.optionsButton = new Button(this, config.width / 2, config.height / 2 + 130, 'optionsButton', 'optionsButtonFocus', 'Options', this.sfx.btnHover, this.sfx.btnSelect);
 
     // Credits button
-    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 260, 'creditsButton', 'creditsButtonFocus', 'Credits', this.sfx.btnHover, this.sfx.btnSelect);
+    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 210, 'creditsButton', 'creditsButtonFocus', 'Credits', this.sfx.btnHover, this.sfx.btnSelect);
 
     // Add background music
     this.model = this.sys.game.globals.model;
@@ -40,7 +40,7 @@ export default class TitleScene extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
 
-    this.add.image(400, 400, 'titleScreen');
+    this.add.image(400, 300, 'gameOverTitle');
   }
 
   update() {
