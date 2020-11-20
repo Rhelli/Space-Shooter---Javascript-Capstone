@@ -70,7 +70,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(4000, this.ready, [], this);
 
-    this.load.image('titleScreen', './backgrounds/titleScreen.png');
+    this.load.image('titleScreen', './logos/dsdLogo.png');
     this.load.image('playButton', './buttons/playButton.png');
     this.load.image('playButtonFocus', './buttons/playButtonFocus.png');
     this.load.image('optionsButton', './buttons/optionsButton.png');
@@ -233,7 +233,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   ready() {
-    this.scene.start('Game');
+    this.scene.start('Title');
     this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title');
