@@ -13,6 +13,8 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.cameras.main.fadeIn(1000, 0, 0);
+
     this.anims.create({
       key: 'ninja',
       frames: this.anims.generateFrameNumbers('ninja'),
