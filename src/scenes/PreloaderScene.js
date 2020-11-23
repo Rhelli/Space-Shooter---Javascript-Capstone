@@ -123,6 +123,9 @@ export default class PreloaderScene extends Phaser.Scene {
       frameHeight: 256
     });
 
+    // NPC Assets
+    this.load.image('starfleetCaptain', './npc/SecurityOfficer.png');
+
     // Enemy Ships & Lasers
     // Ninja Ship
     this.load.spritesheet('ninja', './ships/Ninja.png', {
@@ -248,7 +251,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   ready() {
-    this.scene.start('StoryScene');
+    this.scene.start('Game');
     this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title');

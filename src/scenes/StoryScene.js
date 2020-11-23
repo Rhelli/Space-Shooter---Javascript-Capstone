@@ -71,13 +71,13 @@ export default class StoryScene extends Phaser.Scene {
                           this.scene.start('Game');
                         });
                       });
-                    }, 5000);
+                    }, 15000);
                   },
                 });
-              }, 5000);
+              }, 20000);
             },
           });
-        }, 5000);
+        }, 20000);
       },
     });
   }

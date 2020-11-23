@@ -142,12 +142,12 @@ export default class GameScene extends Phaser.Scene {
       strokeThickness: 1,
     });
 
-    this.playerMessages = this.add.text(16, 700, '', {
+    this.playerMessages = this.add.text(16, 670, '', {
       fontFamily: 'Visitor TT1 BRK, sans-serif, monospace',
       fontSize: '38px',
       fontStyle: 'normal',
       color: '#00FF99',
-      align: 'center',
+      align: 'left',
       stroke: '#FDFEFE',
       strokeThickness: 1,
     })
@@ -162,62 +162,64 @@ export default class GameScene extends Phaser.Scene {
     this.playerLasers = this.add.group();
     this.enemyLasers = this.add.group();
 
-    this.time.addEvent({
-      delay: 1200,
+    setTimeout(() => {
+      this.time.addEvent({
+        delay: 1200,
 
 
-      //callback: () => {
-      //  const gunship1 = new Ninja(
-      //    this,
-      //    Phaser.Math.Between(0, this.game.config.width),
-      //    0
-      //  );
-      //  this.enemies.add(gunship1);
-      //},
+        //callback: () => {
+        //  const gunship1 = new Ninja(
+        //    this,
+        //    Phaser.Math.Between(0, this.game.config.width),
+        //    0
+        //  );
+        //  this.enemies.add(gunship1);
+        //},
 
-      callback: () => {
-        let enemy = null;
+        callback: () => {
+          let enemy = null;
 
-        if (Phaser.Math.Between(0, 10) >= 3) {
-          enemy = new Saboteur(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          )
-        } else if (Phaser.Math.Between(0, 10) >= 4) {
-          enemy = new Paranoid(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          )
-        } else if (Phaser.Math.Between(0, 10) >= 5) {
-          enemy = new UFO(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          );
-        } else if (Phaser.Math.Between(0, 7) >= 7) {
-          enemy = new Ninja(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          );
-        } else {
-          enemy = new Lightning(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0
-          );
-        }
+          if (Phaser.Math.Between(0, 10) >= 3) {
+            enemy = new Saboteur(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            )
+          } else if (Phaser.Math.Between(0, 10) >= 4) {
+            enemy = new Paranoid(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            )
+          } else if (Phaser.Math.Between(0, 10) >= 5) {
+            enemy = new UFO(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          } else if (Phaser.Math.Between(0, 7) >= 7) {
+            enemy = new Ninja(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          } else {
+            enemy = new Lightning(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0
+            );
+          }
 
-        if (enemy !== null) {
-          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
-          this.enemies.add(enemy);
-        }
-      },
-      callbackScope: this,
-      loop: true,
-    });
+          if (enemy !== null) {
+            enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+            this.enemies.add(enemy);
+          }
+        },
+        callbackScope: this,
+        loop: true,
+      });
+    }, 4000);
 
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy) {
@@ -249,9 +251,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
   scoreIntervals() {
-    const count = this.sys.game.globals.score;
+    const count = this.sys.game.globals.count;
     if (count === 3) {
-      this.playerMessages.setText("That's 10 down pilot. Keep it up!");
+      this.playerMessages.setText("That's 10 down pilot.\nKeep it up!");
+      const captain = this.add.image(680, 680, 'starfleetCaptain');
+      captain.setScale(0.15);
       this.tweens.add({
         targets: this.fiftyScore,
         scaleX: 1.2,
@@ -260,13 +264,16 @@ export default class GameScene extends Phaser.Scene {
         duration: 5000,
         repeat: 0,
         onComplete: () => {
-          setTimeout(() => {
+          this.time.delayedCall(3000, () => {
             this.playerMessages.setText('');
-          }, 4000);
+            captain.destroy();
+          })
         }
       })
     } else if (count === 20) {
-      this.playerMessages.setText("That's 20 more. Keep focused!");
+      this.playerMessages.setText("That's 20 more.\nKeep focused!");
+      const captain = this.add.image(680, 680, 'starfleetCaptain');
+      captain.setScale(0.15);
       this.tweens.add({
         targets: this.fiftyScore,
         scaleX: 1.2,
@@ -275,11 +282,16 @@ export default class GameScene extends Phaser.Scene {
         duration: 1000,
         repeat: 0,
         onComplete: () => {
-          this.playerMessages.setText('');
+          this.time.delayedCall(3000, () => {
+            this.playerMessages.setText('');
+            captain.destroy();
+          })
         }
       })
     } else if (count === 30) {
-      this.playerMessages.setText("You've downed 30 now! You're on fire!");
+      this.playerMessages.setText("You've downed 30 now!\nYou're on fire!");
+      const captain = this.add.image(680, 680, 'starfleetCaptain');
+      captain.setScale(0.15);
       this.tweens.add({
         targets: this.fiftyScore,
         scaleX: 1.2,
@@ -288,7 +300,10 @@ export default class GameScene extends Phaser.Scene {
         duration: 1000,
         repeat: 0,
         onComplete: () => {
-          this.playerMessages.setText('');
+          this.time.delayedCall(3000, () => {
+            this.playerMessages.setText('');
+            captain.destroy();
+          })
         }
       })
     }
@@ -357,6 +372,7 @@ export default class GameScene extends Phaser.Scene {
         this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
         this.player.setData('isShooting', false);
       }
+      this.scoreIntervals()
     }
 
     for (let i = 0; i < this.enemies.getChildren().length; i++) {
