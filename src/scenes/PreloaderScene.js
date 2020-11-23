@@ -84,6 +84,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('gameOverTitle', './logos/gameOver.png')
     this.load.image('restartButton', './buttons/restartButton.png');
     this.load.image('restartButtonFocus', './buttons/restartButtonFocus.png')
+    this.load.image('skipButton', './buttons/skipButton.png');
+    this.load.image('skipButtonFocus', './buttons/skipButtonFocus.png');
 
     // GAME SCENE ASSETS
     this.load.image('background0', './backgrounds/bkgd_0.png');

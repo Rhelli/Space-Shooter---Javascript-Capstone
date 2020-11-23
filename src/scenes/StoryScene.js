@@ -1,4 +1,6 @@
 import 'phaser';
+import Button from '../objects/Button';
+import config from '../config/config';
 
 export default class StoryScene extends Phaser.Scene {
   constructor() {
@@ -19,6 +21,13 @@ export default class StoryScene extends Phaser.Scene {
       wordWrapWidth: 700,
       align: 'left',
     });
+
+    this.sfx = {
+      btnHover: this.sound.add('buttonHover'),
+      btnSelect: this.sound.add('buttonSelect')
+    };
+
+    this.skipButton = new Button(this, config.width / 2, config.height / 2 + 200, 'skipButton', 'skipButtonFocus', 'Game', this.sfx.btnHover, this.sfx.btnSelect);
 
     this.tweens.addCounter({
       from: 0,
@@ -58,7 +67,7 @@ export default class StoryScene extends Phaser.Scene {
                       this.cameras.main.fadeOut(1000, 0, 0, 0);
                       this.destroy;
                       this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-                        this.time.delayedCall(1000, () => {
+                        this.time.delayedCall(2000, () => {
                           this.scene.start('Game');
                         });
                       });
