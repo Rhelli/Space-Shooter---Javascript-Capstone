@@ -1,4 +1,5 @@
 import 'phaser';
+import InputTextPlugin from 'phaser3-rex-plugins/plugins/inputtext-plugin';
 
 export default {
   type: Phaser.WEBGL,
@@ -11,6 +12,16 @@ export default {
       gravity: { x: 0, y: 0 }
     }
   },
+  dom: {
+    createContainer: true,
+  },
   pixelArt: true,
-  roundPixels: true
+  roundPixels: true,
+  plugins: {
+    global: [{
+      key: 'InputTextPlugin',
+      plugin: InputTextPlugin,
+      start: true,
+    }],
+  }
 };
