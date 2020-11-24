@@ -1,5 +1,6 @@
 import Entity from './Entity';
 import PlayerLaser from '../weapons/PlayerLaser';
+import { postHighscores } from '../objects/Highscores';
 
 export default class Player extends Entity {
   constructor(scene, x, y, key) {
@@ -52,7 +53,7 @@ export default class Player extends Entity {
       delay: 2000,
       callback: () => {
         this.scene.sound.removeByKey('gameMusic');
-        this.scene.scene.start('GameOver');
+        this.scene.scene.start('HighscoreScene');
       },
       callbackScope: this,
       loop: false

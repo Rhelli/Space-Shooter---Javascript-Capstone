@@ -174,7 +174,7 @@ export default class GameScene extends Phaser.Scene {
 
     setTimeout(() => {
       this.time.addEvent({
-        delay: 1600 - this.sys.game.globals.score,
+        delay: 1500 - this.sys.game.globals.score * 2,
 
         callback: () => {
           let enemy = null;
@@ -252,7 +252,7 @@ export default class GameScene extends Phaser.Scene {
 
   scoreIntervals() {
     const { count } = this.sys.game.globals;
-    if (count === 3) {
+    if (count === 10) {
       this.playerMessages.setText("That's 10 down pilot.\nKeep it up!");
       const captain = this.add.image(680, 680, 'starfleetCaptain');
       captain.setScale(0.15);
@@ -290,6 +290,24 @@ export default class GameScene extends Phaser.Scene {
       })
     } else if (count === 30) {
       this.playerMessages.setText("You've downed 30 now!\nYou're on fire!");
+      const captain = this.add.image(680, 680, 'starfleetCaptain');
+      captain.setScale(0.15);
+      this.tweens.add({
+        targets: this.fiftyScore,
+        scaleX: 1.2,
+        scaleY: 1.2,
+        yoyo: true,
+        duration: 1000,
+        repeat: 0,
+        onComplete: () => {
+          this.time.delayedCall(3000, () => {
+            this.playerMessages.setText('');
+            captain.destroy();
+          })
+        }
+      })
+    } else if (count === 50) {
+      this.playerMessages.setText("That's the 50th.\nThey're coming fast!");
       const captain = this.add.image(680, 680, 'starfleetCaptain');
       captain.setScale(0.15);
       this.tweens.add({
