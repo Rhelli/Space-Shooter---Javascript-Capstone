@@ -16,7 +16,7 @@ export default class TitleScene extends Phaser.Scene {
     }
 
     // Game Button
-    this.gameButton = new Button(this, config.width / 2, config.height / 2 + 100, 'playButton', 'playButtonFocus', 'Game', this.sfx.btnHover, this.sfx.gameStart);
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 + 100, 'playButton', 'playButtonFocus', 'StoryScene', this.sfx.btnHover, this.sfx.gameStart);
 
     // Options button
     this.optionsButton = new Button(this, config.width / 2, config.height / 2 + 180, 'optionsButton', 'optionsButtonFocus', 'Options', this.sfx.btnHover, this.sfx.btnSelect);

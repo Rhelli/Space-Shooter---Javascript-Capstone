@@ -84,6 +84,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('gameOverTitle', './logos/gameOver.png')
     this.load.image('restartButton', './buttons/restartButton.png');
     this.load.image('restartButtonFocus', './buttons/restartButtonFocus.png')
+    this.load.image('skipButton', './buttons/skipButton.png');
+    this.load.image('skipButtonFocus', './buttons/skipButtonFocus.png');
 
     // GAME SCENE ASSETS
     this.load.image('background0', './backgrounds/bkgd_0.png');
@@ -108,6 +110,21 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 128,
       frameHeight: 128
     });
+    this.load.spritesheet('explosion4', './explosions/explosion4.png', {
+      frameWidth: 256,
+      frameHeight: 256
+    });
+    this.load.spritesheet('explosion5', './explosions/explosion5.png', {
+      frameWidth: 256,
+      frameHeight: 256
+    });
+    this.load.spritesheet('explosion6', './explosions/explosion6.png', {
+      frameWidth: 256,
+      frameHeight: 256
+    });
+
+    // NPC Assets
+    this.load.image('starfleetCaptain', './npc/SecurityOfficer.png');
 
     // Enemy Ships & Lasers
     // Ninja Ship

@@ -13,14 +13,17 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    //this.add.image(400, 400, 'background0');
-    //this.add.image(400, 400, 'background2');
-    //this.add.image(400, 400, 'background1');
-    ////this.add.image(400, 400, 'background3');
-    ////this.add.image(400, 400, 'background4');
-    //this.add.image(400, 400, 'background5');
-    //this.add.image(400, 400, 'background6');
-    //this.add.image(400, 400, 'background7');
+    this.model = this.sys.game.globals.model;
+    if (this.model.musicOn === true && this.model.titleMusicPlaying === true) {
+      this.gameMusic = this.sound.add('gameMusic', { volume: 0.9, loop: true });
+      this.sound.removeByKey('titleMusic');
+      this.gameMusic.play();
+      this.model.gameMusicPlaying = true;
+      this.model.titleMusicPlaying = false;
+      this.sys.game.globals.gameMusic = this.gameMusic;
+    }
+
+    this.cameras.main.fadeIn(1000, 0, 0);
 
     this.anims.create({
       key: 'ninja',
@@ -85,6 +88,27 @@ export default class GameScene extends Phaser.Scene {
       repeat: 0
     });
 
+    this.anims.create({
+      key: 'explosion4',
+      frames: this.anims.generateFrameNumbers('explosion4'),
+      frameRate: 120,
+      repeat: 0
+    });
+
+    this.anims.create({
+      key: 'explosion5',
+      frames: this.anims.generateFrameNumbers('explosion5'),
+      frameRate: 120,
+      repeat: 0
+    });
+
+    this.anims.create({
+      key: 'explosion6',
+      frames: this.anims.generateFrameNumbers('explosion6'),
+      frameRate: 120,
+      repeat: 0
+    });
+
     this.sfx = {
       explosions: [
         this.sound.add('explosion1'),
@@ -118,6 +142,26 @@ export default class GameScene extends Phaser.Scene {
       'player',
     );
 
+    this.playerScore = this.add.text(16, 750, 'score : 0', {
+      fontFamily: 'Visitor TT2 BRK, sans-serif, monospace',
+      fontSize: '46px',
+      fontStyle: 'normal',
+      color: '#9FA8DA',
+      align: 'right',
+      stroke: '#fff',
+      strokeThickness: 1,
+    });
+
+    this.playerMessages = this.add.text(16, 650, '', {
+      fontFamily: 'Visitor TT1 BRK, sans-serif, monospace',
+      fontSize: '38px',
+      fontStyle: 'normal',
+      color: '#00FF99',
+      align: 'left',
+      stroke: '#FDFEFE',
+      strokeThickness: 1,
+    })
+
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -128,62 +172,54 @@ export default class GameScene extends Phaser.Scene {
     this.playerLasers = this.add.group();
     this.enemyLasers = this.add.group();
 
-    this.time.addEvent({
-      delay: 1200,
+    setTimeout(() => {
+      this.time.addEvent({
+        delay: 1600 - this.sys.game.globals.score,
 
+        callback: () => {
+          let enemy = null;
 
-      //callback: () => {
-      //  const gunship1 = new Ninja(
-      //    this,
-      //    Phaser.Math.Between(0, this.game.config.width),
-      //    0
-      //  );
-      //  this.enemies.add(gunship1);
-      //},
+          if (Phaser.Math.Between(0, 10) >= 3) {
+            enemy = new Saboteur(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            )
+          } else if (Phaser.Math.Between(0, 10) >= 4) {
+            enemy = new Paranoid(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            )
+          } else if (Phaser.Math.Between(0, 10) >= 5) {
+            enemy = new UFO(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          } else if (Phaser.Math.Between(0, 7) >= 7) {
+            enemy = new Ninja(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          } else {
+            enemy = new Lightning(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0
+            );
+          }
 
-      callback: () => {
-        let enemy = null;
-
-        if (Phaser.Math.Between(0, 10) >= 3) {
-          enemy = new Saboteur(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          )
-        } else if (Phaser.Math.Between(0, 10) >= 4) {
-          enemy = new Paranoid(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          )
-        } else if (Phaser.Math.Between(0, 10) >= 5) {
-          enemy = new UFO(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          );
-        } else if (Phaser.Math.Between(0, 7) >= 7) {
-          enemy = new Ninja(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          );
-        } else {
-          enemy = new Lightning(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0
-          );
-        }
-
-        if (enemy !== null) {
-          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
-          this.enemies.add(enemy);
-        }
-      },
-      callbackScope: this,
-      loop: true,
-    });
+          if (enemy !== null) {
+            enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+            this.enemies.add(enemy);
+          }
+        },
+        callbackScope: this,
+        loop: true,
+      });
+    }, 4000);
 
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy) {
@@ -193,6 +229,7 @@ export default class GameScene extends Phaser.Scene {
 
         enemy.explode(true);
         playerLaser.destroy();
+        this.increaseScore(enemy);
       }
     });
 
@@ -213,7 +250,96 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
+  scoreIntervals() {
+    const { count } = this.sys.game.globals;
+    if (count === 3) {
+      this.playerMessages.setText("That's 10 down pilot.\nKeep it up!");
+      const captain = this.add.image(680, 680, 'starfleetCaptain');
+      captain.setScale(0.15);
+      this.tweens.add({
+        targets: this.fiftyScore,
+        scaleX: 1.2,
+        scaleY: 1.2,
+        yoyo: true,
+        duration: 5000,
+        repeat: 0,
+        onComplete: () => {
+          this.time.delayedCall(3000, () => {
+            this.playerMessages.setText('');
+            captain.destroy();
+          })
+        }
+      })
+    } else if (count === 20) {
+      this.playerMessages.setText("That's 20 more.\nKeep focused!");
+      const captain = this.add.image(680, 680, 'starfleetCaptain');
+      captain.setScale(0.15);
+      this.tweens.add({
+        targets: this.fiftyScore,
+        scaleX: 1.2,
+        scaleY: 1.2,
+        yoyo: true,
+        duration: 1000,
+        repeat: 0,
+        onComplete: () => {
+          this.time.delayedCall(3000, () => {
+            this.playerMessages.setText('');
+            captain.destroy();
+          })
+        }
+      })
+    } else if (count === 30) {
+      this.playerMessages.setText("You've downed 30 now!\nYou're on fire!");
+      const captain = this.add.image(680, 680, 'starfleetCaptain');
+      captain.setScale(0.15);
+      this.tweens.add({
+        targets: this.fiftyScore,
+        scaleX: 1.2,
+        scaleY: 1.2,
+        yoyo: true,
+        duration: 1000,
+        repeat: 0,
+        onComplete: () => {
+          this.time.delayedCall(3000, () => {
+            this.playerMessages.setText('');
+            captain.destroy();
+          })
+        }
+      })
+    }
+  }
 
+  increaseScore(enemy) {
+    if (enemy.getData('type') === 'Paranoid' || enemy.getData('type') === 'Saboteur') {
+      this.sys.game.globals.score += 1;
+    } else if (enemy.getData('type') === 'UFO' || enemy.getData('type') === 'Ninja') {
+      this.sys.game.globals.score += 2;
+    } else if (enemy.getData('type') === 'Lightning') {
+      this.sys.game.globals.score += 4;
+    }
+    this.sys.game.globals.count++;
+    this.scoreIntervals();
+
+    this.playerScore.setText(`score : ${this.sys.game.globals.score}`);
+    this.tweens.add({
+      targets: this.playerScore,
+      scaleX: 1.2,
+      scaleY: 1.2,
+      yoyo: true,
+      duration: 30,
+      repeat: 0,
+      onComplete: () => {
+        this.playerScore.scaleX = 1;
+        this.playerScore.scaleY = this.playerScore.scaleX;
+      }
+    })
+  }
+
+  resetScore() {
+    this.sys.game.globals.score = 0;
+    this.sys.game.globals.count = 0;
+    this.playerScore.setText(this.sys.game.globals.score);
+  }
 
   getEnemiesByType(type) {
     const arr = [];

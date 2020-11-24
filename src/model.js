@@ -3,6 +3,7 @@ export default class Model {
     this._soundOn = true;
     this._musicOn = true;
     this._titleMusicPlaying = false;
+    this._gameMusicPlaying = false;
   }
 
   set musicOn(value) {
@@ -27,5 +28,13 @@ export default class Model {
 
   get titleMusicPlaying() {
     return this._titleMusicPlaying;
+  }
+
+  set gameMusicPlaying(value) {
+    this._gameMusicPlaying = value;
+  }
+
+  get gameMusicPlaying() {
+    return this._gameMusicPlaying;
   }
 }
