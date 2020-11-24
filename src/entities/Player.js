@@ -51,6 +51,7 @@ export default class Player extends Entity {
     this.scene.time.addEvent({
       delay: 2000,
       callback: () => {
+        this.scene.sound.removeByKey('gameMusic');
         this.scene.scene.start('GameOver');
       },
       callbackScope: this,

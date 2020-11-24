@@ -13,6 +13,16 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.model = this.sys.game.globals.model;
+    if (this.model.musicOn === true && this.model.titleMusicPlaying === true) {
+      this.gameMusic = this.sound.add('gameMusic', { volume: 0.9, loop: true });
+      this.sound.removeByKey('titleMusic');
+      this.gameMusic.play();
+      this.model.gameMusicPlaying = true;
+      this.model.titleMusicPlaying = false;
+      this.sys.game.globals.gameMusic = this.gameMusic;
+    }
+
     this.cameras.main.fadeIn(1000, 0, 0);
 
     this.anims.create({
@@ -137,12 +147,12 @@ export default class GameScene extends Phaser.Scene {
       fontSize: '46px',
       fontStyle: 'normal',
       color: '#9FA8DA',
-      align: 'left',
+      align: 'right',
       stroke: '#fff',
       strokeThickness: 1,
     });
 
-    this.playerMessages = this.add.text(16, 670, '', {
+    this.playerMessages = this.add.text(16, 650, '', {
       fontFamily: 'Visitor TT1 BRK, sans-serif, monospace',
       fontSize: '38px',
       fontStyle: 'normal',
@@ -164,17 +174,7 @@ export default class GameScene extends Phaser.Scene {
 
     setTimeout(() => {
       this.time.addEvent({
-        delay: 1200,
-
-
-        //callback: () => {
-        //  const gunship1 = new Ninja(
-        //    this,
-        //    Phaser.Math.Between(0, this.game.config.width),
-        //    0
-        //  );
-        //  this.enemies.add(gunship1);
-        //},
+        delay: 1600 - this.sys.game.globals.score,
 
         callback: () => {
           let enemy = null;
@@ -251,7 +251,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   scoreIntervals() {
-    const count = this.sys.game.globals.count;
+    const { count } = this.sys.game.globals;
     if (count === 3) {
       this.playerMessages.setText("That's 10 down pilot.\nKeep it up!");
       const captain = this.add.image(680, 680, 'starfleetCaptain');
@@ -372,7 +372,6 @@ export default class GameScene extends Phaser.Scene {
         this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
         this.player.setData('isShooting', false);
       }
-      this.scoreIntervals()
     }
 
     for (let i = 0; i < this.enemies.getChildren().length; i++) {

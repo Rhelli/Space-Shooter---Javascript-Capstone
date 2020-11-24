@@ -5,10 +5,10 @@ import Entity from './Entity';
 export default class Saboteur extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'saboteur', 'Saboteur');
-    this.body.velocity.y = Phaser.Math.Between(50, 100);
+    this.body.velocity.y = Phaser.Math.Between(45, 80);
 
     this.shootTimer = this.scene.time.addEvent({
-      delay: 2200,
+      delay: 2400,
       callback: () => {
         const laser = new SaboteurLaser(
           this.scene,

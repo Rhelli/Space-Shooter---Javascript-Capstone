@@ -5,10 +5,10 @@ import LightningLaser from '../weapons/LightningLaser';
 export default class Lightning extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'lightning', 'Lightning');
-    this.body.velocity.y = Phaser.Math.Between(50, 100);
+    this.body.velocity.y = Phaser.Math.Between(70, 100);
 
     this.shootTimer = this.scene.time.addEvent({
-      delay: 5500,
+      delay: 3000,
       callback: () => {
         const laser = new LightningLaser(
           this.scene,
