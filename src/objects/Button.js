@@ -1,7 +1,7 @@
 import 'phaser';
 
 export default class Button extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, key1, key2, targetScene, hover = null, select = null, transition = null) {
+  constructor(scene, x, y, key1, key2, targetScene, hover, select, transition = null) {
     super(scene);
     this.scene = scene;
     this.x = x;
@@ -13,7 +13,7 @@ export default class Button extends Phaser.GameObjects.Container {
 
     if (transition) {
       this.button.on('pointerdown', () => {
-        select.play();
+        if (select) { select.play(); }
         this.scene.cameras.main.fadeOut(1000, 0, 0, 0);
         this.scene.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
           this.scene.time.delayedCall(transition, () => {

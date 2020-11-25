@@ -11,32 +11,55 @@ export default class PostGameHighscoresScene extends Phaser.Scene {
 
 
   create() {
-    this.highscore = this.add.text(config.width / 2, 300, `Pilot Name: ${this.pilotName}\nFinal Score: ${this.score}`, {
-      fontFamily: 'Visitor TT1 BRK',
-      fontSize: '36px',
-      color: '#00FF33',
-      align: 'center',
-    }).setOrigin(0.5, 0.5);
-
     this.playerSettings = {
-      //pilotName = this.sys.game.globals.pilotName;
-      //score = this.sys.game.globals.score;
-      pilotName: 'Steve',
-      score: 45,
+      pilotName: this.sys.game.globals.pilotName,
+      score: this.sys.game.globals.score,
     }
 
-    //initializeGame().then(response => {
-    //  console.log(response);
-    //})
+    this.highscore = this.add.text(config.width / 2, 100, `${this.playerSettings.pilotName}\nFinal Score: ${this.playerSettings.score}`, {
+      fontFamily: 'Visitor TT2 BRK',
+      fontSize: '56px',
+      color: '#00FF33',
+      align: 'center',
+      lineHeight: '1.5',
+      border: '4px solid #00FF33',
+    }).setOrigin(0.5, 0.5);
 
-    postHighscores(this.playerSettings.pilotName, this.playerSettings.score);
+    postHighscores(this.playerSettings.pilotName, this.playerSettings.score).then(response => {
+      if (response.result !== undefined) {
+        this.messages = this.add.text(16, 16, `${response.result}`, {
+          fontFamily: 'Arial',
+          fontSize: '18px',
+          color: '#00FF33',
+          align: 'center',
+          lineHeight: '1.5',
+        });
+      }
+    });
 
     fetchHighscores().then(response => {
-      console.log(response);
-      response.sort((a, b) => b.score - a.score).slice(0, 3)
+      response.sort((a, b) => b[1] - a[1])
+        .slice(0, 7)
         .map((game, i) => {
-          const text = `Pilot: ${game.pilotName} --- Score: ${game.score}`;
-          this.add.text(config.width / 2, (93 * (i + 1.1)), text).setOrigin(0.5, 0.5);
+          if (game[1] === this.playerSettings.score) {
+            const text = `${i + 1}. Pilot: ${game[0]} --- Score: ${game[1]}`;
+            this.add.text(config.width / 2, (85 * (i + 1.1)) + 100, text, {
+              fontFamily: 'Visitor TT2 BRK',
+              fontSize: '38px',
+              color: '#00ffee',
+              align: 'center',
+              lineHeight: '1.5',
+            }).setOrigin(0.5, 0.5);
+            return text;
+          }
+          const text = `${i+1}. Pilot: ${game[0]} --- Score: ${game[1]}`;
+          this.add.text(config.width / 2, (85 * (i + 1.1)) + 100, text, {
+            fontFamily: 'Visitor TT2 BRK',
+            fontSize: '38px',
+            color: '#FFF',
+            align: 'center',
+            lineHeight: '1.5',
+          }).setOrigin(0.5, 0.5);
           return text;
         });
     });

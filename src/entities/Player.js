@@ -52,7 +52,6 @@ export default class Player extends Entity {
     this.scene.time.addEvent({
       delay: 2000,
       callback: () => {
-        postHighscores(this.pilotName, this.score);
         this.scene.sound.removeByKey('gameMusic');
         this.scene.scene.start('PostGameHighscoresScene');
       },

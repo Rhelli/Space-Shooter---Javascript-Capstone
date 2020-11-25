@@ -27,7 +27,7 @@ const postHighscores = async (pilotName, score) => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ pilotName, score }),
+      body: JSON.stringify({ user: pilotName, score }),
     });
     const response = await request.json();
     return response;
@@ -36,18 +36,8 @@ const postHighscores = async (pilotName, score) => {
   }
 };
 
-const sortHighscores = (data) => {
-  const leaderboard = [];
-  data.forEach(entry => {
-    leaderboard.push([entry.user, entry.score]);
-  });
-
-  leaderboard.sort((a, b) => b[1] - a[1]);
-
-  return leaderboard;
-};
-
 const fetchHighscores = async () => {
+  const leaderboard = [];
   try {
     const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/WTgGifRKH5MUvEcfROt5/scores/', {
       method: 'GET',
@@ -57,7 +47,11 @@ const fetchHighscores = async () => {
       },
     });
     const response = await request.json();
-    return sortHighscores(response.result);
+    const data = response.result;
+    data.forEach(entry => {
+      leaderboard.push([entry.user, entry.score]);
+    });
+    return leaderboard;
   } catch (error) {
     throw new Error('Unable to fetch Highscores! Please try again later!');
   }

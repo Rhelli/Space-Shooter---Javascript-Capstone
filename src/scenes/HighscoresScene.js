@@ -2,7 +2,7 @@ import 'phaser';
 import config from '../config/config';
 import Button from '../objects/Button';
 import ScrollingBackground from '../objects/ScrollingBackground';
-import { postHighscores, fetchHighscores } from '../objects/Highscores';
+import { fetchHighscores } from '../objects/Highscores';
 
 export default class HighscoresScene extends Phaser.Scene {
   constructor() {
@@ -10,19 +10,21 @@ export default class HighscoresScene extends Phaser.Scene {
   }
 
   create() {
-    this.highscore = this.add.text(config.width / 2, 300, `Pilot Name: ${this.pilotName}\nFinal Score: ${this.score}`, {
-      fontFamily: 'Visitor TT1 BRK',
-      fontSize: '36px',
-      color: '#00FF33',
-      align: 'center',
-    }).setOrigin(0.5, 0.5);
+    this.title = this.add.image(400, 100, 'highscoresButton');
+    this.title.setScale(1.2);
 
     fetchHighscores().then(response => {
-      console.log(response);
-      response.sort((a, b) => b.score - a.score).slice(0, 3)
+      response.sort((a, b) => b[1] - a[1])
+        .slice(0, 6)
         .map((game, i) => {
-          const text = `Pilot: ${game.pilotName} --- Score: ${game.score}`;
-          this.add.text(config.width / 2, (93 * (i + 1.1)), text).setOrigin(0.5, 0.5);
+          const text = `${i + 1}. Pilot: ${game[0]} --- Score: ${game[1]}`;
+          this.add.text(config.width / 2, (85 * (i + 1.1)) + 100, text, {
+            fontFamily: 'Visitor TT2 BRK',
+            fontSize: '48px',
+            color: '#00ff33',
+            align: 'center',
+            lineHeight: '1.5',
+          }).setOrigin(0.5, 0.5);
           return text;
         });
     });
@@ -32,7 +34,7 @@ export default class HighscoresScene extends Phaser.Scene {
       btnSelect: this.sound.add('buttonSelect', { volume: 0.5 }),
     }
 
-    this.nextButton = new Button(this, config.width / 2, config.height / 2 + 300, 'nextButton', 'nextButtonFocus', 'GameOver', this.sfx.btnHover, this.sfx.btnSelect);
+    this.mainMenuButton = new Button(this, config.width / 2, config.height / 2 + 300, 'mainMenuButton', 'mainMenuButtonFocus', 'Title', this.sfx.btnHover, this.sfx.btnSelect);
 
 
     this.backgrounds = [];
