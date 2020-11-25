@@ -91,6 +91,10 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('confirmButtonFocus', './buttons/confirmButtonFocus.png');
     this.load.image('nextButton', './buttons/nextButton.png');
     this.load.image('nextButtonFocus', './buttons/nextButtonFocus.png');
+    this.load.image('highscoresButton', './buttons/highscoresButton.png');
+    this.load.image('highscoresButtonFocus', './buttons/highscoresButtonFocus.png');
+    this.load.image('mainMenuButton', './buttons/mainMenuButton.png');
+    this.load.image('mainMenuButtonFocus', './buttons/mainMenuButtonFocus.png');
 
     // GAME SCENE ASSETS
     this.load.image('background0', './backgrounds/bkgd_0.png');
@@ -257,7 +261,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
   ready() {
     this.readyCount++;
-    this.scene.start('Game');
+    this.scene.start('PostGameHighscoresScene');
     if (this.readyCount === 2) {
       this.cameras.main.fadeOut(1000, 0, 0, 0);
       this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {

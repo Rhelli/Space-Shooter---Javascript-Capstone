@@ -2,12 +2,13 @@ import 'phaser';
 import config from '../config/config';
 import Button from '../objects/Button';
 import ScrollingBackground from '../objects/ScrollingBackground';
-import { postHighscores, fetchHighscores } from '../objects/Highscores';
+import { postHighscores, fetchHighscores, initializeGame } from '../objects/Highscores';
 
-export default class HighscoresScene extends Phaser.Scene {
+export default class PostGameHighscoresScene extends Phaser.Scene {
   constructor() {
-    super('HighscoresScene');
+    super('PostGameHighscoresScene');
   }
+
 
   create() {
     this.highscore = this.add.text(config.width / 2, 300, `Pilot Name: ${this.pilotName}\nFinal Score: ${this.score}`, {
@@ -16,6 +17,19 @@ export default class HighscoresScene extends Phaser.Scene {
       color: '#00FF33',
       align: 'center',
     }).setOrigin(0.5, 0.5);
+
+    this.playerSettings = {
+      //pilotName = this.sys.game.globals.pilotName;
+      //score = this.sys.game.globals.score;
+      pilotName: 'Steve',
+      score: 45,
+    }
+
+    //initializeGame().then(response => {
+    //  console.log(response);
+    //})
+
+    postHighscores(this.playerSettings.pilotName, this.playerSettings.score);
 
     fetchHighscores().then(response => {
       console.log(response);
