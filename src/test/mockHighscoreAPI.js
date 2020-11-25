@@ -32,7 +32,7 @@ const postHighscores = async (pilotName, score) => {
     const response = await request.json();
     return response;
   } catch (err) {
-    throw new Error('Unable to post Highscores! Please try again later!')
+    throw new Error('Unable to post Highscores! Please try again later!');
   }
 };
 

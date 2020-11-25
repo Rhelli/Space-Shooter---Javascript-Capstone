@@ -7,10 +7,10 @@ export default {
   width: 800,
   height: 800,
   physics: {
-    default: "arcade",
+    default: 'arcade',
     arcade: {
-      gravity: { x: 0, y: 0 }
-    }
+      gravity: { x: 0, y: 0 },
+    },
   },
   dom: {
     createContainer: true,
@@ -23,5 +23,5 @@ export default {
       plugin: InputTextPlugin,
       start: true,
     }],
-  }
+  },
 };

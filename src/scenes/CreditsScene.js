@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import config from '../config/config';
 
 export default class CreditsScene extends Phaser.Scene {
@@ -31,7 +31,7 @@ export default class CreditsScene extends Phaser.Scene {
       delayed: 1000,
       onComplete: () => {
         this.destroy;
-      }
+      },
     });
 
     this.createdByTween = this.tweens.add({
@@ -43,7 +43,7 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete: () => {
         this.destroy;
         this.scene.start('Title');
-      }
+      },
     });
   }
 }

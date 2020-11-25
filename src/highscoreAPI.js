@@ -10,7 +10,7 @@ const initializeGame = async () => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: 'Deep Space Defence '}),
+      body: JSON.stringify({ name: 'Deep Space Defence ' }),
     });
     const response = await request.json();
     return response;
@@ -21,7 +21,7 @@ const initializeGame = async () => {
 
 const postHighscores = async (pilotName, score) => {
   try {
-    const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/WTgGifRKH5MUvEcfROt5/scores/', {
+    const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/QNx4z7IBfVVINUGksTiq/scores/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -32,14 +32,14 @@ const postHighscores = async (pilotName, score) => {
     const response = await request.json();
     return response;
   } catch (err) {
-    throw new Error('Unable to post Highscores! Please try again later!')
+    throw new Error('Unable to post Highscores! Please try again later!');
   }
 };
 
 const fetchHighscores = async () => {
   const leaderboard = [];
   try {
-    const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/WTgGifRKH5MUvEcfROt5/scores/', {
+    const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/QNx4z7IBfVVINUGksTiq/scores/', {
       method: 'GET',
       headers: {
         Accept: 'application/json',

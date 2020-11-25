@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import Player from '../entities/Player';
 import UFO from '../entities/UFO';
 import Ninja from '../entities/Ninja';
@@ -29,84 +29,84 @@ export default class GameScene extends Phaser.Scene {
       key: 'ninja',
       frames: this.anims.generateFrameNumbers('ninja'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
 
     this.anims.create({
       key: 'ufo',
       frames: this.anims.generateFrameNumbers('ufo'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
 
     this.anims.create({
       key: 'paranoid',
       frames: this.anims.generateFrameNumbers('paranoid'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
 
     this.anims.create({
       key: 'saboteur',
       frames: this.anims.generateFrameNumbers('saboteur'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
 
     this.anims.create({
       key: 'lightning',
       frames: this.anims.generateFrameNumbers('lightning'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
 
     this.anims.create({
       key: 'player',
       frames: this.anims.generateFrameNumbers('player'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
 
     this.anims.create({
       key: 'explosion1',
       frames: this.anims.generateFrameNumbers('explosion1'),
       frameRate: 20,
-      repeat: 0
+      repeat: 0,
     });
 
     this.anims.create({
       key: 'explosion2',
       frames: this.anims.generateFrameNumbers('explosion2'),
       frameRate: 20,
-      repeat: 0
+      repeat: 0,
     });
 
     this.anims.create({
       key: 'explosion3',
       frames: this.anims.generateFrameNumbers('explosion3'),
       frameRate: 20,
-      repeat: 0
+      repeat: 0,
     });
 
     this.anims.create({
       key: 'explosion4',
       frames: this.anims.generateFrameNumbers('explosion4'),
       frameRate: 120,
-      repeat: 0
+      repeat: 0,
     });
 
     this.anims.create({
       key: 'explosion5',
       frames: this.anims.generateFrameNumbers('explosion5'),
       frameRate: 120,
-      repeat: 0
+      repeat: 0,
     });
 
     this.anims.create({
       key: 'explosion6',
       frames: this.anims.generateFrameNumbers('explosion6'),
       frameRate: 120,
-      repeat: 0
+      repeat: 0,
     });
 
     this.sfx = {
@@ -122,10 +122,10 @@ export default class GameScene extends Phaser.Scene {
         this.sound.add('explosion9'),
       ],
       laser: [
-        this.sound.add('laser2', { volume: 0.5}),
-        this.sound.add('laser4', { volume: 0.5}),
-        this.sound.add('laser7', { volume: 0.5}),
-      ]
+        this.sound.add('laser2', { volume: 0.5 }),
+        this.sound.add('laser4', { volume: 0.5 }),
+        this.sound.add('laser7', { volume: 0.5 }),
+      ],
     };
 
     this.allBackgrounds = ['background0', 'background1', 'background2', 'background3', 'background4', 'background5', 'background6', 'background7'];
@@ -160,7 +160,7 @@ export default class GameScene extends Phaser.Scene {
       align: 'left',
       stroke: '#FDFEFE',
       strokeThickness: 1,
-    })
+    });
 
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -184,13 +184,13 @@ export default class GameScene extends Phaser.Scene {
               this,
               Phaser.Math.Between(0, this.game.config.width),
               0,
-            )
+            );
           } else if (Phaser.Math.Between(0, 10) >= 4) {
             enemy = new Paranoid(
               this,
               Phaser.Math.Between(0, this.game.config.width),
               0,
-            )
+            );
           } else if (Phaser.Math.Between(0, 10) >= 5) {
             enemy = new UFO(
               this,
@@ -207,7 +207,7 @@ export default class GameScene extends Phaser.Scene {
             enemy = new Lightning(
               this,
               Phaser.Math.Between(0, this.game.config.width),
-              0
+              0,
             );
           }
 
@@ -267,9 +267,9 @@ export default class GameScene extends Phaser.Scene {
           this.time.delayedCall(3000, () => {
             this.playerMessages.setText('');
             captain.destroy();
-          })
-        }
-      })
+          });
+        },
+      });
     } else if (count === 20) {
       this.playerMessages.setText("That's 20 more.\nKeep focused!");
       const captain = this.add.image(680, 680, 'starfleetCaptain');
@@ -285,9 +285,9 @@ export default class GameScene extends Phaser.Scene {
           this.time.delayedCall(3000, () => {
             this.playerMessages.setText('');
             captain.destroy();
-          })
-        }
-      })
+          });
+        },
+      });
     } else if (count === 30) {
       this.playerMessages.setText("You've downed 30 now!\nYou're on fire!");
       const captain = this.add.image(680, 680, 'starfleetCaptain');
@@ -303,9 +303,9 @@ export default class GameScene extends Phaser.Scene {
           this.time.delayedCall(3000, () => {
             this.playerMessages.setText('');
             captain.destroy();
-          })
-        }
-      })
+          });
+        },
+      });
     } else if (count === 50) {
       this.playerMessages.setText("That's the 50th.\nThey're coming fast!");
       const captain = this.add.image(680, 680, 'starfleetCaptain');
@@ -321,9 +321,9 @@ export default class GameScene extends Phaser.Scene {
           this.time.delayedCall(3000, () => {
             this.playerMessages.setText('');
             captain.destroy();
-          })
-        }
-      })
+          });
+        },
+      });
     }
   }
 
@@ -349,8 +349,8 @@ export default class GameScene extends Phaser.Scene {
       onComplete: () => {
         this.playerScore.scaleX = 1;
         this.playerScore.scaleY = this.playerScore.scaleX;
-      }
-    })
+      },
+    });
   }
 
   resetScore() {
@@ -396,10 +396,10 @@ export default class GameScene extends Phaser.Scene {
       const enemy = this.enemies.getChildren()[i];
       enemy.update();
 
-      if (enemy.x < -enemy.displayWidth ||
-        enemy.x > this.game.config.width + enemy.displayWidth ||
-        enemy.y < -enemy.displayHeight * 4 ||
-        enemy.y > this.game.config.height + enemy.displayHeight) {
+      if (enemy.x < -enemy.displayWidth
+        || enemy.x > this.game.config.width + enemy.displayWidth
+        || enemy.y < -enemy.displayHeight * 4
+        || enemy.y > this.game.config.height + enemy.displayHeight) {
         if (enemy) {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
@@ -412,10 +412,10 @@ export default class GameScene extends Phaser.Scene {
     for (let i = 0; i < this.enemyLasers; i++) {
       const laser = this.enemyLasers.getChildren()[i];
       laser.update();
-      if (laser.x < -laser.displayWidth ||
-        laser.x > this.game.config.width + laser.displayWidth ||
-        laser.y < -laser.displayHeight * 4 ||
-        laser.y > this.game.config.height + laser.displayHeight) {
+      if (laser.x < -laser.displayWidth
+        || laser.x > this.game.config.width + laser.displayWidth
+        || laser.y < -laser.displayHeight * 4
+        || laser.y > this.game.config.height + laser.displayHeight) {
         if (laser) {
           laser.destroy();
         }
@@ -424,10 +424,10 @@ export default class GameScene extends Phaser.Scene {
 
     for (let i = 0; i < this.playerLasers.getChildren().length; i++) {
       const laser = this.playerLasers.getChildren()[i];
-      if (laser.x < -laser.displayWidth ||
-        laser.x > this.game.config.width + laser.displayWidth ||
-        laser.y < -laser.displayHeight * 4 ||
-        laser.y > this.game.config.height + laser.displayHeight) {
+      if (laser.x < -laser.displayWidth
+        || laser.x > this.game.config.width + laser.displayWidth
+        || laser.y < -laser.displayHeight * 4
+        || laser.y > this.game.config.height + laser.displayHeight) {
         if (laser) {
           laser.destroy();
         }

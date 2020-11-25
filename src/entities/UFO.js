@@ -9,7 +9,7 @@ export default class UFO extends Entity {
 
     this.states = {
       MOVE_DOWN: 'MOVE_DOWN',
-      CHASE: 'CHASE'
+      CHASE: 'CHASE',
     };
     this.state = this.states.MOVE_DOWN;
 

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import Button from '../objects/Button';
-import config from '../config/Config';
+import ButtonGen from '../objects/ButtonGen';
+import config from '../config/config';
 import ScrollingBackground from '../objects/ScrollingBackground';
 
 export default class TitleScene extends Phaser.Scene {
@@ -13,7 +13,7 @@ export default class TitleScene extends Phaser.Scene {
       btnHover: this.sound.add('buttonHover'),
       btnSelect: this.sound.add('buttonSelect'),
       gameStart: this.sound.add('gameStart'),
-    }
+    };
 
     // Game Button
     this.gameButton = this.add.image(config.width / 2, config.height / 2 + 40, 'playButton').setInteractive();
@@ -25,26 +25,26 @@ export default class TitleScene extends Phaser.Scene {
 
     this.gameButton.on('pointerout', () => {
       this.gameButton.setTexture('playButton');
-    })
+    });
 
     this.gameButton.on('pointerdown', () => {
-      this.sfx.gameStart.play()
+      this.sfx.gameStart.play();
       this.sound.removeByKey('titleMusic');
       this.cameras.main.fadeOut(1000, 0, 0, 0);
-      this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+      this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
         this.time.delayedCall(4000, () => {
           this.scene.start('StoryScene');
         });
-      })
-    })
+      });
+    });
     // Options button
-    this.optionsButton = new Button(this, config.width / 2, config.height / 2 + 120, 'optionsButton', 'optionsButtonFocus', 'Options', this.sfx.btnHover, this.sfx.btnSelect);
+    this.optionsButton = new ButtonGen(this, config.width / 2, config.height / 2 + 120, 'optionsButton', 'optionsButtonFocus', 'Options', this.sfx.btnHover, this.sfx.btnSelect);
 
     // Credits button
-    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 200, 'creditsButton', 'creditsButtonFocus', 'Credits', this.sfx.btnHover, this.sfx.btnSelect);
+    this.creditsButton = new ButtonGen(this, config.width / 2, config.height / 2 + 200, 'creditsButton', 'creditsButtonFocus', 'Credits', this.sfx.btnHover, this.sfx.btnSelect);
 
     // Highscores Button
-    this.highscoresButton = new Button(this, config.width / 2, config.height / 2 + 280, 'highscoresButton', 'highscoresButtonFocus', 'HighscoresScene', this.sfx.btnHover, this.sfx.btnSelect);
+    this.highscoresButton = new ButtonGen(this, config.width / 2, config.height / 2 + 280, 'highscoresButton', 'highscoresButtonFocus', 'HighscoresScene', this.sfx.btnHover, this.sfx.btnSelect);
 
     // Add background music
     this.model = this.sys.game.globals.model;
