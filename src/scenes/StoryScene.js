@@ -8,7 +8,7 @@ export default class StoryScene extends Phaser.Scene {
   }
 
   create() {
-    this.sound.removeByKey('titleMusic');
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
     this.gameMusic = this.sound.add('gameMusic', { volume: 0.5, loop: true });
     this.gameMusic.play();
     const textSource = "2147. Years of radio silence and not a\nsingle word from the local star\ncluster. \n\nTerra's diplomacy with Centauri 7b had\ndwindled for decades now, opening new\npathways for attack from those less\ninclined to the Terra mindset."
@@ -42,7 +42,6 @@ export default class StoryScene extends Phaser.Scene {
 
       onComplete: () => {
         setTimeout(() => {
-          this.cameras.main.fadeOut(1000, 0, 0, 0);
           this.destroy;
           this.cameras.main.fadeIn(1000, 0, 0);
           this.tweens.addCounter({

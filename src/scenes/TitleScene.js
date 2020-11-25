@@ -16,13 +16,35 @@ export default class TitleScene extends Phaser.Scene {
     }
 
     // Game Button
-    this.gameButton = new Button(this, config.width / 2, config.height / 2 + 100, 'playButton', 'playButtonFocus', 'StoryScene', this.sfx.btnHover, this.sfx.gameStart);
+    this.gameButton = this.add.image(config.width / 2, config.height / 2 + 40, 'playButton').setInteractive();
 
+    this.gameButton.on('pointerover', () => {
+      this.gameButton.setTexture('playButtonFocus');
+      this.sfx.btnHover.play();
+    });
+
+    this.gameButton.on('pointerout', () => {
+      this.gameButton.setTexture('playButton');
+    })
+
+    this.gameButton.on('pointerdown', () => {
+      this.sfx.gameStart.play()
+      this.sound.removeByKey('titleMusic');
+      this.cameras.main.fadeOut(1000, 0, 0, 0);
+      this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+        this.time.delayedCall(4000, () => {
+          this.scene.start('StoryScene');
+        });
+      })
+    })
     // Options button
-    this.optionsButton = new Button(this, config.width / 2, config.height / 2 + 180, 'optionsButton', 'optionsButtonFocus', 'Options', this.sfx.btnHover, this.sfx.btnSelect);
+    this.optionsButton = new Button(this, config.width / 2, config.height / 2 + 120, 'optionsButton', 'optionsButtonFocus', 'Options', this.sfx.btnHover, this.sfx.btnSelect);
 
     // Credits button
-    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 260, 'creditsButton', 'creditsButtonFocus', 'Credits', this.sfx.btnHover, this.sfx.btnSelect);
+    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 200, 'creditsButton', 'creditsButtonFocus', 'Credits', this.sfx.btnHover, this.sfx.btnSelect);
+
+    // Highscores Button
+    this.highscoresButton = new Button(this, config.width / 2, config.height / 2 + 280, 'highscoresButton', 'highscoresButtonFocus', 'HighscoresScene', this.sfx.btnHover, this.sfx.btnSelect);
 
     // Add background music
     this.model = this.sys.game.globals.model;
@@ -40,7 +62,7 @@ export default class TitleScene extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
 
-    this.add.image(400, 400, 'titleScreen');
+    this.add.image(400, 360, 'titleScreen');
   }
 
   update() {

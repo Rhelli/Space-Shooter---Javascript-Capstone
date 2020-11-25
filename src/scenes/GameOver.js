@@ -24,6 +24,9 @@ export default class GameOverScene extends Phaser.Scene {
     // Credits button
     this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 210, 'creditsButton', 'creditsButtonFocus', 'Credits', this.sfx.btnHover, this.sfx.btnSelect);
 
+    // Main Menu button
+    this.mainMenuButton = new Button(this, config.width / 2, config.height / 2 + 290, 'mainMenuButton', 'mainMenuButtonFocus', 'Title', this.sfx.btnHover, this.sfx.btnSelect);
+
     // Add background music
     this.model = this.sys.game.globals.model;
     if (this.model.musicOn === true && this.model.titleMusicPlaying === false) {

@@ -6,6 +6,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
     this.add.image(400, 330, 'bootLogo');
     this.add.image(400, 760, 'bootCopyright');
     const progressBar = this.add.graphics();
@@ -86,6 +87,14 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('restartButtonFocus', './buttons/restartButtonFocus.png')
     this.load.image('skipButton', './buttons/skipButton.png');
     this.load.image('skipButtonFocus', './buttons/skipButtonFocus.png');
+    this.load.image('confirmButton', './buttons/confirmButton.png');
+    this.load.image('confirmButtonFocus', './buttons/confirmButtonFocus.png');
+    this.load.image('nextButton', './buttons/nextButton.png');
+    this.load.image('nextButtonFocus', './buttons/nextButtonFocus.png');
+    this.load.image('highscoresButton', './buttons/highscoresButton.png');
+    this.load.image('highscoresButtonFocus', './buttons/highscoresButtonFocus.png');
+    this.load.image('mainMenuButton', './buttons/mainMenuButton.png');
+    this.load.image('mainMenuButtonFocus', './buttons/mainMenuButtonFocus.png');
 
     // GAME SCENE ASSETS
     this.load.image('background0', './backgrounds/bkgd_0.png');
@@ -251,11 +260,15 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   ready() {
-    this.scene.start('Game');
     this.readyCount++;
+    this.scene.start('Title');
     if (this.readyCount === 2) {
-      this.scene.start('Title');
+      this.cameras.main.fadeOut(1000, 0, 0, 0);
+      this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+        this.time.delayedCall(3000, () => {
+          this.scene.start('PlayerNameScene');
+        });
+      })
     }
   }
 }
-
