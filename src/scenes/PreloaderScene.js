@@ -6,7 +6,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    this.cameras.main.fadeIn(1000, 0, 0, 0);
+    this.cameras.main.fadeIn(800, 0, 0, 0);
     this.add.image(400, 330, 'bootLogo');
     this.add.image(400, 760, 'bootCopyright');
     const progressBar = this.add.graphics();
@@ -82,9 +82,9 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('checkboxChecked', './buttons/checkboxChecked.png');
     this.load.image('menuButton', './buttons/menuButton.png');
     this.load.image('menuButtonFocus', './buttons/menuButtonFocus.png');
-    this.load.image('gameOverTitle', './logos/gameOver.png')
+    this.load.image('gameOverTitle', './logos/gameOver.png');
     this.load.image('restartButton', './buttons/restartButton.png');
-    this.load.image('restartButtonFocus', './buttons/restartButtonFocus.png')
+    this.load.image('restartButtonFocus', './buttons/restartButtonFocus.png');
     this.load.image('skipButton', './buttons/skipButton.png');
     this.load.image('skipButtonFocus', './buttons/skipButtonFocus.png');
     this.load.image('confirmButton', './buttons/confirmButton.png');
@@ -109,27 +109,27 @@ export default class PreloaderScene extends Phaser.Scene {
     // Explosion spritesheets
     this.load.spritesheet('explosion1', './explosions/explosion1.png', {
       frameWidth: 96,
-      frameHeight: 96
+      frameHeight: 96,
     });
     this.load.spritesheet('explosion2', './explosions/explosion2.png', {
       frameWidth: 32,
-      frameHeight: 32
+      frameHeight: 32,
     });
     this.load.spritesheet('explosion3', './explosions/explosion3.png', {
       frameWidth: 128,
-      frameHeight: 128
+      frameHeight: 128,
     });
     this.load.spritesheet('explosion4', './explosions/explosion4.png', {
       frameWidth: 256,
-      frameHeight: 256
+      frameHeight: 256,
     });
     this.load.spritesheet('explosion5', './explosions/explosion5.png', {
       frameWidth: 256,
-      frameHeight: 256
+      frameHeight: 256,
     });
     this.load.spritesheet('explosion6', './explosions/explosion6.png', {
       frameWidth: 256,
-      frameHeight: 256
+      frameHeight: 256,
     });
 
     // NPC Assets
@@ -139,7 +139,7 @@ export default class PreloaderScene extends Phaser.Scene {
     // Ninja Ship
     this.load.spritesheet('ninja', './ships/Ninja.png', {
       frameWidth: 32,
-      frameHeight: 32
+      frameHeight: 32,
     });
     // Ninja Laser
     this.load.image('ninjaLaser1', './lasers/blue/1.png');
@@ -150,10 +150,10 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('ninjaLaser6', './lasers/blue/6.png');
     this.load.image('ninjaLaser7', './lasers/blue/7.png');
 
-    //UFO Ship
+    // UFO Ship
     this.load.spritesheet('ufo', './ships/UFO.png', {
       frameWidth: 32,
-      frameHeight: 32
+      frameHeight: 32,
     });
     // UFO Lasers
     this.load.image('ufoLasers1', './lasers/red/1.png');
@@ -167,7 +167,7 @@ export default class PreloaderScene extends Phaser.Scene {
     // Paranoid Ship
     this.load.spritesheet('paranoid', './ships/Paranoid.png', {
       frameWidth: 32,
-      frameHeight: 32
+      frameHeight: 32,
     });
     // Paranoid Lasers
     this.load.image('paranoidLasers1', './lasers/green/1.png');
@@ -180,7 +180,7 @@ export default class PreloaderScene extends Phaser.Scene {
     // Saboteur Ship
     this.load.spritesheet('saboteur', './ships/Saboteur.png', {
       frameWidth: 32,
-      frameHeight: 32
+      frameHeight: 32,
     });
     // Saboteur Lasers
     this.load.image('saboteurLasers1', './lasers/pink/1.png');
@@ -194,7 +194,7 @@ export default class PreloaderScene extends Phaser.Scene {
     // Lightning Ship
     this.load.spritesheet('lightning', './ships/Lightning.png', {
       frameWidth: 32,
-      frameHeight: 32
+      frameHeight: 32,
     });
     // Lightning Lasers
     this.load.image('lightningLasers1', './lasers/yellow/1.png');
@@ -210,7 +210,7 @@ export default class PreloaderScene extends Phaser.Scene {
     // Player Ship
     this.load.spritesheet('player', './ships/Lighter.png', {
       frameWidth: 32,
-      frameHeight: 32
+      frameHeight: 32,
     });
 
     // Player lasers
@@ -225,26 +225,26 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('playerLaser9', './lasers/turq/9.png');
 
     // SFX
-    this.load.audio('laser1', './sound/lasers/Laser_00.mp3')
-    this.load.audio('laser2', './sound/lasers/Laser_01.mp3')
-    this.load.audio('laser3', './sound/lasers/Laser_02.mp3')
-    this.load.audio('laser4', './sound/lasers/Laser_03.mp3')
-    this.load.audio('laser5', './sound/lasers/Laser_04.mp3')
-    this.load.audio('laser6', './sound/lasers/Laser_05.mp3')
-    this.load.audio('laser7', './sound/lasers/Laser_06.mp3')
-    this.load.audio('laser8', './sound/lasers/Laser_07.mp3')
-    this.load.audio('laser9', './sound/lasers/Laser_08.mp3')
-    this.load.audio('laser10', './sound/lasers/Laser_09.mp3')
+    this.load.audio('laser1', './sound/lasers/Laser_00.mp3');
+    this.load.audio('laser2', './sound/lasers/Laser_01.mp3');
+    this.load.audio('laser3', './sound/lasers/Laser_02.mp3');
+    this.load.audio('laser4', './sound/lasers/Laser_03.mp3');
+    this.load.audio('laser5', './sound/lasers/Laser_04.mp3');
+    this.load.audio('laser6', './sound/lasers/Laser_05.mp3');
+    this.load.audio('laser7', './sound/lasers/Laser_06.mp3');
+    this.load.audio('laser8', './sound/lasers/Laser_07.mp3');
+    this.load.audio('laser9', './sound/lasers/Laser_08.mp3');
+    this.load.audio('laser10', './sound/lasers/Laser_09.mp3');
 
-    this.load.audio('explosion1', './sound/explosions/explosion01.wav')
-    this.load.audio('explosion2', './sound/explosions/explosion02.wav')
-    this.load.audio('explosion3', './sound/explosions/explosion03.wav')
-    this.load.audio('explosion4', './sound/explosions/explosion04.wav')
-    this.load.audio('explosion5', './sound/explosions/explosion05.wav')
-    this.load.audio('explosion6', './sound/explosions/explosion06.wav')
-    this.load.audio('explosion7', './sound/explosions/explosion07.wav')
-    this.load.audio('explosion8', './sound/explosions/explosion08.wav')
-    this.load.audio('explosion9', './sound/explosions/explosion09.wav')
+    this.load.audio('explosion1', './sound/explosions/explosion01.wav');
+    this.load.audio('explosion2', './sound/explosions/explosion02.wav');
+    this.load.audio('explosion3', './sound/explosions/explosion03.wav');
+    this.load.audio('explosion4', './sound/explosions/explosion04.wav');
+    this.load.audio('explosion5', './sound/explosions/explosion05.wav');
+    this.load.audio('explosion6', './sound/explosions/explosion06.wav');
+    this.load.audio('explosion7', './sound/explosions/explosion07.wav');
+    this.load.audio('explosion8', './sound/explosions/explosion08.wav');
+    this.load.audio('explosion9', './sound/explosions/explosion09.wav');
 
     this.load.audio('buttonHover', './sound/buttons/buttonHover.ogg');
     this.load.audio('buttonSelect', './sound/buttons/buttonSelect.ogg');
@@ -261,14 +261,13 @@ export default class PreloaderScene extends Phaser.Scene {
 
   ready() {
     this.readyCount++;
-    this.scene.start('Title');
     if (this.readyCount === 2) {
       this.cameras.main.fadeOut(1000, 0, 0, 0);
       this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
         this.time.delayedCall(3000, () => {
           this.scene.start('PlayerNameScene');
         });
-      })
+      });
     }
   }
 }

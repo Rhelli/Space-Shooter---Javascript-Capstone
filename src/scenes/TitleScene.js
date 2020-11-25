@@ -13,7 +13,7 @@ export default class TitleScene extends Phaser.Scene {
       btnHover: this.sound.add('buttonHover'),
       btnSelect: this.sound.add('buttonSelect'),
       gameStart: this.sound.add('gameStart'),
-    }
+    };
 
     // Game Button
     this.gameButton = this.add.image(config.width / 2, config.height / 2 + 40, 'playButton').setInteractive();
@@ -25,18 +25,18 @@ export default class TitleScene extends Phaser.Scene {
 
     this.gameButton.on('pointerout', () => {
       this.gameButton.setTexture('playButton');
-    })
+    });
 
     this.gameButton.on('pointerdown', () => {
-      this.sfx.gameStart.play()
+      this.sfx.gameStart.play();
       this.sound.removeByKey('titleMusic');
       this.cameras.main.fadeOut(1000, 0, 0, 0);
       this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
         this.time.delayedCall(4000, () => {
           this.scene.start('StoryScene');
         });
-      })
-    })
+      });
+    });
     // Options button
     this.optionsButton = new Button(this, config.width / 2, config.height / 2 + 120, 'optionsButton', 'optionsButtonFocus', 'Options', this.sfx.btnHover, this.sfx.btnSelect);
 

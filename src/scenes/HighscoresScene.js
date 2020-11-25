@@ -32,7 +32,7 @@ export default class HighscoresScene extends Phaser.Scene {
     this.sfx = {
       btnHover: this.sound.add('buttonHover', { volume: 0.5 }),
       btnSelect: this.sound.add('buttonSelect', { volume: 0.5 }),
-    }
+    };
 
     this.mainMenuButton = new Button(this, config.width / 2, config.height / 2 + 300, 'mainMenuButton', 'mainMenuButtonFocus', 'Title', this.sfx.btnHover, this.sfx.btnSelect);
 

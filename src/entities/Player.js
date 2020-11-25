@@ -1,10 +1,9 @@
 import Entity from './Entity';
 import PlayerLaser from '../weapons/PlayerLaser';
-import { postHighscores } from '../objects/Highscores';
 
 export default class Player extends Entity {
   constructor(scene, x, y, key) {
-    super(scene, x, y, key, "Player");
+    super(scene, x, y, key, 'Player');
     this.setData('speed', 200);
     this.setData('isShooting', false);
     this.setData('timerShootDelay', 10);

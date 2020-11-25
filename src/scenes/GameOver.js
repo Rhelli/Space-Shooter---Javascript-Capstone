@@ -13,7 +13,7 @@ export default class GameOverScene extends Phaser.Scene {
       btnHover: this.sound.add('buttonHover'),
       btnSelect: this.sound.add('buttonSelect'),
       gameStart: this.sound.add('gameStart'),
-    }
+    };
 
     // Game Button
     this.gameButton = new Button(this, config.width / 2, config.height / 2 + 50, 'restartButton', 'restartButtonFocus', 'Game', this.sfx.btnHover, this.sfx.gameStart);

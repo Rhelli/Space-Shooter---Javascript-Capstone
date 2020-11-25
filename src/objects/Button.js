@@ -19,8 +19,8 @@ export default class Button extends Phaser.GameObjects.Container {
           this.scene.time.delayedCall(transition, () => {
             this.scene.scene.start(targetScene);
           });
-        })
-      })
+        });
+      });
     } else {
       this.button.on('pointerdown', () => {
         this.scene.scene.start(targetScene);

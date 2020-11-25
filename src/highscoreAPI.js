@@ -10,7 +10,7 @@ const initializeGame = async () => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: 'Deep Space Defence '}),
+      body: JSON.stringify({ name: 'Deep Space Defence ' }),
     });
     const response = await request.json();
     return response;
@@ -32,7 +32,7 @@ const postHighscores = async (pilotName, score) => {
     const response = await request.json();
     return response;
   } catch (err) {
-    throw new Error('Unable to post Highscores! Please try again later!')
+    throw new Error('Unable to post Highscores! Please try again later!');
   }
 };
 

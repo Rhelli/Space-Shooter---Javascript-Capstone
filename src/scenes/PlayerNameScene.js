@@ -13,7 +13,7 @@ export default class PlayerNameScene extends Phaser.Scene {
   }
 
   create() {
-    this.enteredText = this.add.text(0 , 0 , '', {
+    this.enteredText = this.add.text(0, 0, '', {
       fontFamily: 'Visitor TT1 BRK',
       fontSize: '36px',
       fontStyle: 'normal',
@@ -38,7 +38,7 @@ export default class PlayerNameScene extends Phaser.Scene {
     this.sfx = {
       btnHover: this.sound.add('buttonHover'),
       btnSelect: this.sound.add('buttonSelect'),
-    }
+    };
 
     this.enteredText.text = this.inputText.text;
 
@@ -62,7 +62,7 @@ export default class PlayerNameScene extends Phaser.Scene {
           this.time.delayedCall(3000, () => {
             this.scene.start('Title');
           });
-        })
+        });
       }
     });
   }

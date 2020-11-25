@@ -14,7 +14,7 @@ export default class PostGameHighscoresScene extends Phaser.Scene {
     this.playerSettings = {
       pilotName: this.sys.game.globals.pilotName,
       score: this.sys.game.globals.score,
-    }
+    };
 
     this.highscore = this.add.text(config.width / 2, 100, `${this.playerSettings.pilotName}\nFinal Score: ${this.playerSettings.score}`, {
       fontFamily: 'Visitor TT2 BRK',
@@ -52,7 +52,7 @@ export default class PostGameHighscoresScene extends Phaser.Scene {
             }).setOrigin(0.5, 0.5);
             return text;
           }
-          const text = `${i+1}. Pilot: ${game[0]} --- Score: ${game[1]}`;
+          const text = `${i + 1}. Pilot: ${game[0]} --- Score: ${game[1]}`;
           this.add.text(config.width / 2, (85 * (i + 1.1)) + 100, text, {
             fontFamily: 'Visitor TT2 BRK',
             fontSize: '38px',
@@ -67,7 +67,7 @@ export default class PostGameHighscoresScene extends Phaser.Scene {
     this.sfx = {
       btnHover: this.sound.add('buttonHover', { volume: 0.5 }),
       btnSelect: this.sound.add('buttonSelect', { volume: 0.5 }),
-    }
+    };
 
     this.nextButton = new Button(this, config.width / 2, config.height / 2 + 300, 'nextButton', 'nextButtonFocus', 'GameOver', this.sfx.btnHover, this.sfx.btnSelect);
 
