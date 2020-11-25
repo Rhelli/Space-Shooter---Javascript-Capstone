@@ -91,52 +91,54 @@ Additionally, we were required to connect our in game scores with a service API 
   - Filling out the Story Scene
   - Adding messages for the player depending on the number of ships they have downed
 
-
-
-
 ## 🔬 Tools & Technology Used
 **Languages & Frameworks**
- - Ruby 2.7.1
- - Ruby on Rails 6.0.3.1
- - SASS/CSS3
- - Bootstrap
+ - Javascript
+ - [Phaser 3.24.1](http://phaser.io/)
+ - Webpack 5.4.0
 
-**Gems of note**
- - [Devise](https://github.com/heartcombo/devise)
- - [Faker](https://github.com/faker-ruby/faker)
- - [HIRB](https://github.com/cldwalker/hirb)  (GOAT Award 🥇)
- - [Bullet](https://github.com/flyerhzm/bullet)
- - [FontAwesome](https://rubygems.org/gems/font-awesome-rails/versions/4.7.0.2)
+**Package Management**
+ - NPM
 
 **Testing**
- - [RSpec 3.9](https://rspec.info/)
-
-**Database**
- - PostgreSQL
+ - [JEst 26.6.3](https://jestjs.io/)
 
 **Linters & Quality Control**
- - [Stickler CI](https://stickler-ci.com/)
- - [Rubocop 0.85.0](https://github.com/rubocop-hq/rubocop-rails)
+ - [ESLint](https://eslint.org/)
+ - [StyleLint](https://stylelint.io/)
 
 **Deployment**
- - Heroku
+ - Github Pages
 
 ### 💻 Setup & Use
-Follow [this link](https://secret-cliffs-91268.herokuapp.com/) to see a live version of the project. If you'd like a closer look, continue reading....
+Follow [this link]() to see a live version of the project. If you'd like a closer look, continue reading....
 
 #### Setup
-Setup should be fairly straightforward. You will have to ensure your machine is properly equipped to run the code first:
-  1. Make sure you have both [Ruby](https://www.ruby-lang.org/en/documentation/installation/) and Ruby on Rails ([Mac](https://gorails.com/setup/osx/10.15-catalina) • [Linux](https://gorails.com/setup/ubuntu/19.10) • [Windows](https://gorails.com/setup/windows/10)) installed.
-  2. Download this repository.
-  3. **`cd`** into the root directory of wherever you download this repo. [What does 'cd' mean?](https://www.macworld.com/article/2042378/master-the-command-line-navigating-files-and-folders.html)
-  4. Whilst at the root (home) directory of this project, enter **`bundle install`** to install the projects software dependencies.
-  5. In your terminal window, enter **`rails server`** to start the server.
-  6. Now navigate to **`localhost:3000`** in your browser to start playing around with the webpages!
+For the live site, [head here.](https://the-earl-of-sandwich.netlify.app/)
 
-Alternatively if you'd like to confirm the entire project is passing testing:
-  1. **`cd`** into this repository in your terminal
-  2. Enter **`bundle exec rspec`** to run all tests
+1. To inspect and tinker with the code on your system, download this repo either [here](https://github.com/Rhelli/Restaurant-Website/archive/develop.zip) or from the link at the top of the page
 
+2. Now it's time to ensure you've got Node and NPM installed. If you do, skip this step. Otherwise, head on over to [nodejs's website](https://nodejs.org/en/) to download node with npm.
+
+3. Time to go back to the project! Open your terminal (either in your text editor or otherwise) and 'cd' (i.e. navigate) to the root of this repo.
+
+4. Time to install Webpack! Ensuring you're at this repo's root, enter the following command into your terminal. This will install webpack locally (to this project only):
+
+        npm install --save-dev webpack
+
+5. Finally, once webpack has installed successfully, run the following command to install all of the projects dependencies:
+
+        npm install
+
+#### Usage
+There are a few commands that you can use interact with the project:
+ - `$npm run build` - This will build the project using webpack and bundle everything into the `/dist` folder. From here, you can open the `index.html` in your browser to play the game.
+
+ - `$npm run watch` - This will build and update the project in the `/dist` folder **actively**, meaning changes will update `/dist`. You will, however, have to refresh the browser to see changes.
+
+ - `$npm run start` - This will build and update the project with changes. No browser refresh required. This is appropriate for if you want to edit the games files and have the page update on save.
+
+ - `$npm run test` - This will run all tests for the project with the written Jest tests.
 
 ******
 
@@ -169,7 +171,7 @@ Alternatively if you'd like to confirm the entire project is passing testing:
 
 Contributions, issues and feature requests are more than welcome!
 
-If you have any problems running or setting this project up, please submit it as a bug on the [issues page.](https://github.com/Rhelli/StayInTouch-Social-Media/issues) right away!
+If you have any problems playing the game or setting it up, please submit it as a bug on the [issues page.](https://github.com/Rhelli/StayInTouch-Social-Media/issues) right away!
 
 If you want to make your own changes, modifications or improvements, go ahead and Fork it!
 1. [Fork it](https://github.com/Rhelli/StayInTouch-Social-Media/fork)
@@ -184,9 +186,6 @@ Rory Hellier - [Github](https://github.com/Rhelli)
 
 ## 🖐🏼 Show Your Support!
 Give a ⭐️ if you like this project!
-
-## 🍻 Credits & Acknowledgements
-The original design specifications and influence for this project are drawn from [Gregoire Vella's Snapscan](https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding?tracking_source=) design on Behance.
 
 ## ⚖️ Licensing
 This project is [MIT](https://github.com/Rhelli/StayInTouch-Social-Media/LICENSE.txt) licensed.

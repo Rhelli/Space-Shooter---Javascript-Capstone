@@ -50,7 +50,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "axios": "^0.21.0",
     "node-fetch": "^2.6.1",
     "phaser": "^3.24.1",
     "phaser3-rex-plugins": "^1.1.31",
