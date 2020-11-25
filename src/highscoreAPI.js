@@ -21,7 +21,7 @@ const initializeGame = async () => {
 
 const postHighscores = async (pilotName, score) => {
   try {
-    const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/WTgGifRKH5MUvEcfROt5/scores/', {
+    const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/QNx4z7IBfVVINUGksTiq/scores/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -39,7 +39,7 @@ const postHighscores = async (pilotName, score) => {
 const fetchHighscores = async () => {
   const leaderboard = [];
   try {
-    const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/WTgGifRKH5MUvEcfROt5/scores/', {
+    const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/QNx4z7IBfVVINUGksTiq/scores/', {
       method: 'GET',
       headers: {
         Accept: 'application/json',

@@ -1,5 +1,5 @@
-import 'phaser';
-import Button from '../objects/button';
+import Phaser from 'phaser';
+import ButtonGen from '../objects/ButtonGen';
 
 export default class OptionsScene extends Phaser.Scene {
   constructor() {
@@ -37,7 +37,7 @@ export default class OptionsScene extends Phaser.Scene {
       this.updateAudio();
     });
 
-    this.menuButton = new Button(this, 400, 500, 'menuButton', 'menuButtonFocus', 'Title', 'btnHover', 'btnSelect');
+    this.menuButton = new ButtonGen(this, 400, 500, 'menuButton', 'menuButtonFocus', 'Title', 'btnHover', 'btnSelect');
 
     this.updateAudio();
   }

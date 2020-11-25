@@ -1,6 +1,6 @@
-import 'phaser';
+import Phaser from 'phaser';
 import config from '../config/config';
-import Button from '../objects/Button';
+import ButtonGen from '../objects/ButtonGen';
 import ScrollingBackground from '../objects/ScrollingBackground';
 import { postHighscores, fetchHighscores } from '../highscoreAPI';
 
@@ -69,7 +69,7 @@ export default class PostGameHighscoresScene extends Phaser.Scene {
       btnSelect: this.sound.add('buttonSelect', { volume: 0.5 }),
     };
 
-    this.nextButton = new Button(this, config.width / 2, config.height / 2 + 300, 'nextButton', 'nextButtonFocus', 'GameOver', this.sfx.btnHover, this.sfx.btnSelect);
+    this.nextButton = new ButtonGen(this, config.width / 2, config.height / 2 + 300, 'nextButton', 'nextButtonFocus', 'GameOver', this.sfx.btnHover, this.sfx.btnSelect);
 
 
     this.backgrounds = [];

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import Button from '../objects/Button';
-import config from '../config/Config';
+import config from '../config/config';
+import ButtonGen from '../objects/ButtonGen';
 import ScrollingBackground from '../objects/ScrollingBackground';
 
 export default class GameOverScene extends Phaser.Scene {
@@ -16,16 +16,16 @@ export default class GameOverScene extends Phaser.Scene {
     };
 
     // Game Button
-    this.gameButton = new Button(this, config.width / 2, config.height / 2 + 50, 'restartButton', 'restartButtonFocus', 'Game', this.sfx.btnHover, this.sfx.gameStart);
+    this.gameButton = new ButtonGen(this, config.width / 2, config.height / 2 + 50, 'restartButton', 'restartButtonFocus', 'Game', this.sfx.btnHover, this.sfx.gameStart);
 
     // Options button
-    this.optionsButton = new Button(this, config.width / 2, config.height / 2 + 130, 'optionsButton', 'optionsButtonFocus', 'Options', this.sfx.btnHover, this.sfx.btnSelect);
+    this.optionsButton = new ButtonGen(this, config.width / 2, config.height / 2 + 130, 'optionsButton', 'optionsButtonFocus', 'Options', this.sfx.btnHover, this.sfx.btnSelect);
 
     // Credits button
-    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 210, 'creditsButton', 'creditsButtonFocus', 'Credits', this.sfx.btnHover, this.sfx.btnSelect);
+    this.creditsButton = new ButtonGen(this, config.width / 2, config.height / 2 + 210, 'creditsButton', 'creditsButtonFocus', 'Credits', this.sfx.btnHover, this.sfx.btnSelect);
 
     // Main Menu button
-    this.mainMenuButton = new Button(this, config.width / 2, config.height / 2 + 290, 'mainMenuButton', 'mainMenuButtonFocus', 'Title', this.sfx.btnHover, this.sfx.btnSelect);
+    this.mainMenuButton = new ButtonGen(this, config.width / 2, config.height / 2 + 290, 'mainMenuButton', 'mainMenuButtonFocus', 'Title', this.sfx.btnHover, this.sfx.btnSelect);
 
     // Add background music
     this.model = this.sys.game.globals.model;

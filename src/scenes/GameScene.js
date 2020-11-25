@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import Player from '../entities/Player';
 import UFO from '../entities/UFO';
 import Ninja from '../entities/Ninja';

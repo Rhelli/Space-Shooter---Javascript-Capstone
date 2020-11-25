@@ -1,6 +1,5 @@
-import 'phaser';
+import Phaser from 'phaser';
 import config from '../config/config';
-import Button from '../objects/Button';
 
 export default class PlayerNameScene extends Phaser.Scene {
   constructor() {

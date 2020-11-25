@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 
 export default class Entity extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, key, type) {
@@ -21,7 +21,9 @@ export default class Entity extends Phaser.GameObjects.Sprite {
       this.explosionArray = ['explosion1', 'explosion2', 'explosion3', 'explosion4', 'explosion5', 'explosion6'];
       this.play(this.explosionArray[Phaser.Math.Between(0, 5)]);
 
-      this.scene.sfx.explosions[Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1)].play();
+      this.scene.sfx.explosions[
+        Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1)
+      ].play();
 
       if (this.shootTimer !== undefined) {
         if (this.shootTimer) {

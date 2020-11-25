@@ -19,6 +19,7 @@
     "arrow-parens": "off",
     "no-plusplus": "off",
     "radix": "off",
+    "no-unused-expressions": "off"
   },
   "ignorePatterns": [
     "dist/",

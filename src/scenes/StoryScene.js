@@ -1,5 +1,5 @@
-import 'phaser';
-import Button from '../objects/Button';
+import Phaser from 'phaser';
+import ButtonGen from '../objects/ButtonGen';
 import config from '../config/config';
 
 export default class StoryScene extends Phaser.Scene {
@@ -15,7 +15,7 @@ export default class StoryScene extends Phaser.Scene {
     const textSource2 = 'Then, without any prior warning, alarms\nstarted sounding, tracing from the\nOort cloud, inwards. Towards Terra.\n\nEntangled and distorted messages had\nbegun to seep through from outlier\nstationary orbit ships, reporting wave\nafter wave of Nyribean warships.';
     const textSource3 = 'Thousands, if not millions would be\nlost.\n\nOur first and last chance lies with\nthose positioned at our Deep Space\nDefence posts.';
     const wordCount = textSource.split(' ').length;
-    const text = this.add.text(10, 100, '', {
+    const text = this.add.text(400, 400, '', {
       fontFamily: 'Visitor TT1 BRK',
       fontSize: '36px',
       fontStyle: 'normal',
@@ -23,14 +23,14 @@ export default class StoryScene extends Phaser.Scene {
       wordWrap: true,
       wordWrapWidth: 600,
       align: 'center',
-    });
+    }).setOrigin(0.5, 0.5);
 
     this.sfx = {
       btnHover: this.sound.add('buttonHover', { volume: 0.5 }),
       btnSelect: this.sound.add('buttonSelect', { volume: 0.5 }),
     };
 
-    this.skipButton = new Button(this, config.width / 2, config.height / 2 + 200, 'skipButton', 'skipButtonFocus', 'Game', this.sfx.btnHover, this.sfx.btnSelect);
+    this.skipButton = new ButtonGen(this, config.width / 2, config.height / 2 + 200, 'skipButton', 'skipButtonFocus', 'Game', this.sfx.btnHover, this.sfx.btnSelect);
 
     this.tweens.addCounter({
       from: 0,
@@ -68,11 +68,13 @@ export default class StoryScene extends Phaser.Scene {
                     setTimeout(() => {
                       this.cameras.main.fadeOut(1000, 0, 0, 0);
                       this.destroy;
-                      this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-                        this.time.delayedCall(3000, () => {
-                          this.scene.start('Game');
-                        });
-                      });
+                      this.cameras.main.once(
+                        Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
+                          this.time.delayedCall(3000, () => {
+                            this.scene.start('Game');
+                          });
+                        },
+                      );
                     }, 15000);
                   },
                 });

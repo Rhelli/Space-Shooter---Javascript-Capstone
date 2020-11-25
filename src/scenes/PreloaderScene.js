@@ -143,12 +143,6 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     // Ninja Laser
     this.load.image('ninjaLaser1', './lasers/blue/1.png');
-    this.load.image('ninjaLaser2', './lasers/blue/2.png');
-    this.load.image('ninjaLaser3', './lasers/blue/3.png');
-    this.load.image('ninjaLaser4', './lasers/blue/4.png');
-    this.load.image('ninjaLaser5', './lasers/blue/5.png');
-    this.load.image('ninjaLaser6', './lasers/blue/6.png');
-    this.load.image('ninjaLaser7', './lasers/blue/7.png');
 
     // UFO Ship
     this.load.spritesheet('ufo', './ships/UFO.png', {
@@ -157,12 +151,6 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     // UFO Lasers
     this.load.image('ufoLasers1', './lasers/red/1.png');
-    this.load.image('ufoLasers2', './lasers/red/2.png');
-    this.load.image('ufoLasers3', './lasers/red/3.png');
-    this.load.image('ufoLasers4', './lasers/red/4.png');
-    this.load.image('ufoLasers5', './lasers/red/5.png');
-    this.load.image('ufoLasers6', './lasers/red/6.png');
-    this.load.image('ufoLasers7', './lasers/red/7.png');
 
     // Paranoid Ship
     this.load.spritesheet('paranoid', './ships/Paranoid.png', {
@@ -170,12 +158,7 @@ export default class PreloaderScene extends Phaser.Scene {
       frameHeight: 32,
     });
     // Paranoid Lasers
-    this.load.image('paranoidLasers1', './lasers/green/1.png');
-    this.load.image('paranoidLasers2', './lasers/green/2.png');
-    this.load.image('paranoidLasers3', './lasers/green/3.png');
-    this.load.image('paranoidLasers4', './lasers/green/4.png');
     this.load.image('paranoidLasers5', './lasers/green/5.png');
-    this.load.image('paranoidLasers6', './lasers/green/6.png');
 
     // Saboteur Ship
     this.load.spritesheet('saboteur', './ships/Saboteur.png', {
@@ -183,13 +166,7 @@ export default class PreloaderScene extends Phaser.Scene {
       frameHeight: 32,
     });
     // Saboteur Lasers
-    this.load.image('saboteurLasers1', './lasers/pink/1.png');
-    this.load.image('saboteurLasers2', './lasers/pink/2.png');
-    this.load.image('saboteurLasers3', './lasers/pink/3.png');
     this.load.image('saboteurLasers4', './lasers/pink/4.png');
-    this.load.image('saboteurLasers5', './lasers/pink/5.png');
-    this.load.image('saboteurLasers6', './lasers/pink/6.png');
-    this.load.image('saboteurLasers7', './lasers/pink/7.png');
 
     // Lightning Ship
     this.load.spritesheet('lightning', './ships/Lightning.png', {
@@ -197,15 +174,7 @@ export default class PreloaderScene extends Phaser.Scene {
       frameHeight: 32,
     });
     // Lightning Lasers
-    this.load.image('lightningLasers1', './lasers/yellow/1.png');
-    this.load.image('lightningLasers2', './lasers/yellow/2.png');
-    this.load.image('lightningLasers3', './lasers/yellow/3.png');
-    this.load.image('lightningLasers4', './lasers/yellow/4.png');
     this.load.image('lightningLasers5', './lasers/yellow/5.png');
-    this.load.image('lightningLasers6', './lasers/yellow/6.png');
-    this.load.image('lightningLasers7', './lasers/yellow/7.png');
-    this.load.image('lightningLasers8', './lasers/yellow/8.png');
-    this.load.image('lightningLasers9', './lasers/yellow/9.png');
 
     // Player Ship
     this.load.spritesheet('player', './ships/Lighter.png', {
@@ -214,27 +183,12 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     // Player lasers
-    this.load.image('playerLaser1', './lasers/turq/1.png');
-    this.load.image('playerLaser2', './lasers/turq/2.png');
     this.load.image('playerLaser3', './lasers/turq/3.png');
-    this.load.image('playerLaser4', './lasers/turq/4.png');
-    this.load.image('playerLaser5', './lasers/turq/5.png');
-    this.load.image('playerLaser6', './lasers/turq/6.png');
-    this.load.image('playerLaser7', './lasers/turq/7.png');
-    this.load.image('playerLaser8', './lasers/turq/8.png');
-    this.load.image('playerLaser9', './lasers/turq/9.png');
 
     // SFX
-    this.load.audio('laser1', './sound/lasers/Laser_00.mp3');
     this.load.audio('laser2', './sound/lasers/Laser_01.mp3');
-    this.load.audio('laser3', './sound/lasers/Laser_02.mp3');
     this.load.audio('laser4', './sound/lasers/Laser_03.mp3');
-    this.load.audio('laser5', './sound/lasers/Laser_04.mp3');
-    this.load.audio('laser6', './sound/lasers/Laser_05.mp3');
     this.load.audio('laser7', './sound/lasers/Laser_06.mp3');
-    this.load.audio('laser8', './sound/lasers/Laser_07.mp3');
-    this.load.audio('laser9', './sound/lasers/Laser_08.mp3');
-    this.load.audio('laser10', './sound/lasers/Laser_09.mp3');
 
     this.load.audio('explosion1', './sound/explosions/explosion01.wav');
     this.load.audio('explosion2', './sound/explosions/explosion02.wav');
@@ -261,9 +215,10 @@ export default class PreloaderScene extends Phaser.Scene {
 
   ready() {
     this.readyCount++;
+    //this.scene.start('PostGameHighscoresScene');
     if (this.readyCount === 2) {
       this.cameras.main.fadeOut(1000, 0, 0, 0);
-      this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+      this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
         this.time.delayedCall(3000, () => {
           this.scene.start('PlayerNameScene');
         });
