@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="screens/preview.png" alt="Stay In Touch's Home Page" width="900" height="auto">
+  <img src="previews/title-scene.gif" alt="Deep Space Defenders Main Menu" width="800" height="auto">
 
   <h1 align="center">🛸👾🕹️ Deep Space Defender</h1>
 
@@ -144,26 +144,21 @@ There are a few commands that you can use interact with the project:
 
 ## 🎬 Feature Previews
 
-### Creating Activities, getting statistics and Deleting Activities
+### The Main Game Scene
 
+<p align="center">
+<a href="previews/game-scene.gif"><img src="previews/game-scene.gif" alt="The Main Game Scene" width="800" height="auto"></a>
+</p>
 
-<a href="screens/creating-activities.gif"><img src="screens/creating-activities.gif" alt="Creating & Destroying Activities" width="800" height="auto"></a>
+> A Quick Preview of the In-Game action
 
-> Creating an activity will log it immediately, provide you with its statistics on the Activity Page and increment the weekly activity count on the users profile.
+### The Post-Match Highscores
 
-### Creating and Destroying Groups
+<p align="center">
+<a href="previews/highscore-scene.gif"><img src="previews/highscore-scene.gif" alt="The Highscore Scene" width="800" height="auto"></a>
+</p>
+> A preview of the Post-game highscore scene, where users can see their scores stack up against those previously attained. All previous highscores are fetched via service API.
 
-
-<a href="screens/group-creation.gif"><img src="screens/group-creation.gif" alt="Creating and Destroying Groups" width="800" height="auto"></a>
-
-> From the 'My Groups' page, the user can see all their active group memberships, as well as suggested groups not yet joined. Continuing to the 'Create Group' page allows the user to create a new group with a name, description and auto-populated group icon. A new group will appear site wide.
-
-### The Group Page, KOMs and Membership
-
-
-<a href="screens/group-membership.gif"><img src="screens/group-membership.gif" alt="Creating A New Post" width="800" height="auto"></a>
-
-> Navigating from the 'My Groups' page, the user can find new groups in the 'Suggested Groups' section. On the Group page itself, the user is presented with the option to join (or leave) the group, the current member list with [KOMs](https://en.wikipedia.org/wiki/King_of_the_Mountains) and trophies and recent activities at the bottom.
 
 *******
 
