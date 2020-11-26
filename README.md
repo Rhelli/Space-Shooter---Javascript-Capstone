@@ -1,7 +1,7 @@
 <p align="center">
   <img src="previews/title-scene.gif" alt="Deep Space Defenders Main Menu" width="800" height="auto">
 
-  <h1 align="center">🛸👾🕹️ Deep Space Defender</h1>
+  <h1 align="center">🛸👾 Deep Space Defender</h1>
 
 
 <h3 align='center'>
@@ -9,29 +9,28 @@
 </h3>
 <p align="center">
     <br />
-    <a href="https://secret-cliffs-91268.herokuapp.com/"><strong>Play The Game »</strong></a>
+    <a href=""><strong>🕹️ Play The Game »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/archive/release/0.1.0.zip">Download this repository</a>
+    <a href="https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/archive/feature/readme.zip">Download this repository</a>
     |
-    <a href="https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/issues/new/choose">Report A Bug</a>
+    <a href="https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/issues/new/choose">Report A Bug</a>
     |
-    <a href="https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/fork">Fork It</a>
+    <a href="https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/fork">Fork It</a>
   </p>
 </p>
 
 
 ## 📑 Table of Contents
-  - [The Project Brief](https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/tree/release/0.1.0#-the-project-brief)
-  - [The Nitty Gritty](https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/tree/release/0.1.0#%EF%B8%8F-the-nitty-gritty)
-  - [Tools & Technology Used](https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/tree/release/0.1.0#-tools--technology-used)
-  - [Setup & Use](https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/tree/release/0.1.0#-setup--use)
-  - [Showcase](https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/tree/release/0.1.0#-feature-previews)
-  - [Contributions, Issues and Forking](https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/tree/release/0.1.0#%EF%B8%8F-contributions-issues-and-forking)
-  - [Creator](https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/tree/release/0.1.0#-creator)
-  - [Show Your Support!](https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/tree/release/0.1.0#-show-your-support)
-  - [Credit & Acknowledgements](https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/tree/release/0.1.0#credits--acknowledgements)
-  - [Licensing](https://github.com/Rhelli/RoR-Capstone---Activity-Tracker/tree/release/0.1.0#%EF%B8%8F-licensing)
+  - [The Project Brief](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/tree/feature/readme#-the-project-brief)
+  - [The Nitty Gritty](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/tree/feature/readme#%EF%B8%8F-the-nitty-gritty)
+  - [Tools & Technology Used](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/tree/feature/readme#-tools--technology-used)
+  - [Setup & Use](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/tree/feature/readme#-setup--use)
+  - [Showcase](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/tree/feature/readme#-feature-previews)
+  - [Contributions, Issues and Forking](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/tree/feature/readme#%EF%B8%8F-contributions-issues-and-forking)
+  - [Creator](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/tree/feature/readme#-creator)
+  - [Show Your Support!](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/tree/feature/readme#-show-your-support)
+  - [Licensing](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/tree/feature/readme#%EF%B8%8F-licensing)
 
 
 ## 🔰 The Project Brief
@@ -114,9 +113,9 @@ Additionally, we were required to connect our in game scores with a service API 
 Follow [this link]() to see a live version of the project. If you'd like a closer look, continue reading....
 
 #### Setup
-For the live site, [head here.](https://the-earl-of-sandwich.netlify.app/)
+For the live site, [head here.]()
 
-1. To inspect and tinker with the code on your system, download this repo either [here](https://github.com/Rhelli/Restaurant-Website/archive/develop.zip) or from the link at the top of the page
+1. To inspect and tinker with the code on your system, download this repo either [here](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/archive/feature/readme.zip) or from the link at the top of the page
 
 2. Now it's time to ensure you've got Node and NPM installed. If you do, skip this step. Otherwise, head on over to [nodejs's website](https://nodejs.org/en/) to download node with npm.
 
@@ -166,10 +165,10 @@ There are a few commands that you can use interact with the project:
 
 Contributions, issues and feature requests are more than welcome!
 
-If you have any problems playing the game or setting it up, please submit it as a bug on the [issues page.](https://github.com/Rhelli/StayInTouch-Social-Media/issues) right away!
+If you have any problems playing the game or setting it up, please submit it as a bug on the [issues page.](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/blob/feature/readme/issues) right away!
 
 If you want to make your own changes, modifications or improvements, go ahead and Fork it!
-1. [Fork it](https://github.com/Rhelli/StayInTouch-Social-Media/fork)
+1. [Fork it](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/blob/feature/readme)
 2. Create your working branch (git checkout -b [choose-a-name])
 3. Commit your changes (git commit -am 'what this commit will fix/add/improve')
 4. Push to the branch (git push origin [chosen-name])
@@ -183,4 +182,4 @@ Rory Hellier - [Github](https://github.com/Rhelli)
 Give a ⭐️ if you like this project!
 
 ## ⚖️ Licensing
-This project is [MIT](https://github.com/Rhelli/StayInTouch-Social-Media/LICENSE.txt) licensed.
+This project is [GNU](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/blob/feature/readme/LICENSE.TXT) licensed.
