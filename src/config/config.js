@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import InputTextPlugin from 'phaser3-rex-plugins/plugins/inputtext-plugin';
 
 export default {
