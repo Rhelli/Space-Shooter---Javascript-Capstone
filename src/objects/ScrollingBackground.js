@@ -11,8 +11,6 @@ export default class ScrollingBackground {
     for (let i = 0; i < 5; i++) {
       const layer = this.scene.add.sprite(400, 400, this.key);
       layer.y = (layer.displayHeight * i);
-      const flipX = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
-      const flipY = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
       layer.setScale(1, 1);
       layer.setDepth(-5);
       this.scene.physics.world.enableBody(layer, 0);
