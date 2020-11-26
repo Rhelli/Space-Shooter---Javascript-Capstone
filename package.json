@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/issues"
   },
-  "homepage": "https://Rhelli.github.io//Space-Shooter---Javascript-Capstone",
+  "homepage": "https://Rhelli.github.io/Space-Shooter---Javascript-Capstone",
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
