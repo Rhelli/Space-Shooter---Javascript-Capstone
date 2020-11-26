@@ -71,6 +71,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(4000, this.ready, [], this);
 
+    this.load.crossOrigin = "Anonymous";
     this.load.image('titleScreen', './logos/dsdLogo.png');
     this.load.image('playButton', './buttons/playButton.png');
     this.load.image('playButtonFocus', './buttons/playButtonFocus.png');
