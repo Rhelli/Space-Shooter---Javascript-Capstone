@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Visitor TT2 BRK';
+  src:
+    url('VisitorTT2BRK.woff2') format('woff2'),
+    url('VisitorTT2BRK.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Visitor TT1 BRK';
+  src:
+    url('VisitorTT1BRK.woff2') format('woff2'),
+    url('VisitorTT1BRK.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
