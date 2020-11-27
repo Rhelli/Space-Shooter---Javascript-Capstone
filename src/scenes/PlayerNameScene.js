@@ -57,7 +57,7 @@ export default class PlayerNameScene extends Phaser.Scene {
         this.inputText.destroy();
         this.sys.game.globals.pilotName = this.enteredText.text;
         this.cameras.main.fadeOut(1000, 0, 0, 0);
-        this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+        this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
           this.time.delayedCall(3000, () => {
             this.scene.start('Title');
           });

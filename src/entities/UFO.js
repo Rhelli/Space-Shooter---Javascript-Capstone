@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import Entity from './Entity';
 import UFOLaser from '../weapons/UFOLaser';
 

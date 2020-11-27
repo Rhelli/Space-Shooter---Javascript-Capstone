@@ -71,6 +71,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(4000, this.ready, [], this);
 
+    this.load.crossOrigin = 'Anonymous';
     this.load.image('titleScreen', './logos/dsdLogo.png');
     this.load.image('playButton', './buttons/playButton.png');
     this.load.image('playButtonFocus', './buttons/playButtonFocus.png');
@@ -215,7 +216,6 @@ export default class PreloaderScene extends Phaser.Scene {
 
   ready() {
     this.readyCount++;
-    //this.scene.start('PostGameHighscoresScene');
     if (this.readyCount === 2) {
       this.cameras.main.fadeOut(1000, 0, 0, 0);
       this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {

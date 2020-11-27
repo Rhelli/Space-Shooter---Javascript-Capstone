@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import InputTextPlugin from 'phaser3-rex-plugins/plugins/inputtext-plugin';
 
 export default {
@@ -9,6 +9,7 @@ export default {
   physics: {
     default: 'arcade',
     arcade: {
+      debug: false,
       gravity: { x: 0, y: 0 },
     },
   },
