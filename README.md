@@ -9,7 +9,7 @@
 </h3>
 <p align="center">
     <br />
-    <a href=""><strong>🕹️ Play The Game »</strong></a>
+    <a href="https://rhelli.github.io/Space-Shooter---Javascript-Capstone/"><strong>🕹️ Play The Game »</strong></a>
     <br />
     <br />
     <a href="https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/archive/feature/readme.zip">Download this repository</a>
@@ -113,7 +113,7 @@ Additionally, we were required to connect our in game scores with a service API 
 Follow [this link]() to see a live version of the project. If you'd like a closer look, continue reading....
 
 #### Setup
-For the live site, [head here.]()
+For a direct link to the game, [head here.](https://rhelli.github.io/Space-Shooter---Javascript-Capstone/)
 
 1. To inspect and tinker with the code on your system, download this repo either [here](https://github.com/Rhelli/Space-Shooter---Javascript-Capstone/archive/feature/readme.zip) or from the link at the top of the page
 
@@ -129,7 +129,7 @@ For the live site, [head here.]()
 
         npm install
 
-#### Usage
+#### Code Usage
 There are a few commands that you can use interact with the project:
  - `$npm run build` - This will build the project using webpack and bundle everything into the `/dist` folder. From here, you can open the `index.html` in your browser to play the game.
 
@@ -138,6 +138,16 @@ There are a few commands that you can use interact with the project:
  - `$npm run start` - This will build and update the project with changes. No browser refresh required. This is appropriate for if you want to edit the games files and have the page update on save.
 
  - `$npm run test` - This will run all tests for the project with the written Jest tests.
+
+#### Playing the Game
+The game has a very basic control system all gamers will be familiar with - WASD!
+ - W - Move the ship forwards;
+ - S - Move the ship backwards;
+ - A - Move the ship left;
+ - D - Move the ship right;
+ - Spacebar - Fire the lasers!
+
+The objective of the game? Destroy as many of the enemy as possible! The game is set up so that it will progressively get more difficult the more enemies you defeat, so keep at it!
 
 ******
 
