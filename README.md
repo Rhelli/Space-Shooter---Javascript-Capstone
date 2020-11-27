@@ -139,7 +139,7 @@ There are a few commands that you can use interact with the project:
 
  - `$npm run test` - This will run all tests for the project with the written Jest tests.
 
-#### Playing the Game
+#### Playing the Game ⬆️⬇️⬅️➡️
 The game has a very basic control system all gamers will be familiar with - WASD!
  - W - Move the ship forwards;
  - S - Move the ship backwards;
